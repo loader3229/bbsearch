@@ -150,13 +150,14 @@ The transition rows of every block in the core list must be checked **character 
 
 ## 9. Rules for AI agents
 
-- **Change only what was asked** — no opportunistic refactoring, no extra features, no "optimising" unrelated code
+- **Change only what was asked** — no opportunistic refactoring, no extra features, no "optimising" unrelated code. The one exception is new Turing machine cores, see the last bullet
 - **Do not create files unless necessary** — prefer editing existing files; create documentation files only when explicitly requested
 - **Do not proactively create README / CHANGELOG / documentation** — the project already has `README.md` and `docs/`; when syncing, **edit them in place** rather than appending narrative paragraphs
 - **Deletion over retention** — completed temporary plans and superseded approaches are deleted outright
 - **Absolute dates** — write concrete dates such as `2026-11-15` in documentation, never relative wording like "today" or "recently"
 - **The code is the source of truth** — but when the code's behaviour is obviously a bug, do not rewrite the documentation to match the bug; mark it as "⚠️ suspected code bug" in your summary and let the documentation keep describing the intended behaviour
 - **Background search processes** — use `run_in_background` for long runs; to terminate, use `Stop-Process -Id <pid> -Force`
+- **New Turing machine cores are yours to add** — when you come across a core that `bbcores_new.txt` does not contain yet, **add it yourself** so that `bbsearch` can search its landmark configuration. This needs **no code change and no recompilation**: the core table is read from the txt at run time. A core block is four lines — `name` / `cfg` / `slot` / `core` — where `cfg` describes the landmark shape and the head state, `slot` gives the counter importance order and the counter minima, and `core` holds the transition rows (each row exactly `3 × nsym` characters, `---` = a FREE cell). Copy the transition rows **character by character** from the source; never retype them from memory. After adding a core, run the self-check script and `./bbsearch --cores` (the row count must grow by one and the landmark template / importance columns must be correct), then update the tables in `docs/cores.md`
 
 ## 10. Common pitfalls and known issues
 

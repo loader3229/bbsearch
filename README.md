@@ -8,6 +8,7 @@ This is a **single-file C++ command-line tool**. Core data comes from loader3229
 
 - **48 cores**: covering the `f_ω`, `f_(ω+1)` … `f_(ω*2+1)`, `f_(ω^2)`, `f_(ω^2+1)`, `f_(ω^2+2)`, `f_(ω^2+3)`, `f_(ω^ω)`, `f_(ω^ω+1)`, `f_(ε0)` families, with 3–17 states and 3–7 symbols
 - **Core table comes from the list file**: the program reads [bbcores_new.txt](bbcores_new.txt) at run time (each core is a `name` / `cfg` / `slot` / `core` four-line block); `--cores-file` changes the path; there is no built-in copy in the code
+- **New cores can be added by hand**: discovering a Turing machine core that is not in the list yet is enough — append its four-line block to `bbcores_new.txt` and `bbsearch` searches that core's landmark configuration on the next run, with no recompilation
 - **Three landmark structures**: the tool recognises `0^inf 3^(2m+1) 2^k <head> 1^n <right>` (`KIND_BCFG`), `0^inf <head> 3^n 0^inf` (`KIND_THREE`) and `0^inf 1^m <head> <right config>` (`KIND_ONES`, the head cell is the first cell of the right-hand first segment) automatically
 - **Per-core importance order**: every core has its own counter precedence order (compared lexicographically), e.g. `fw3_4` is `p > k > n > m`
 - **DFS + Zobrist hash cycle detection**: expands every machine containing that core over a blank tape, branching on FREE cells to fill the table
@@ -77,6 +78,34 @@ The most commonly used options:
 | `--start blank\|cfg` | `blank` | Start mode |
 | `--startstate A..Y` | Depends on the mode | The state the machine starts in |
 | `--k --n --m --p --q --r --r5` | `16 3 0 1 1 1 1` | Counter values for the input configuration in `cfg` mode |
+
+## Adding a new core
+
+The core table is **data, not code**: if you come across a Turing machine core that the list does not contain yet, you can add it yourself. No recompilation is needed — `bbsearch` reads the list at run time and picks the new core up immediately.
+
+A core is a four-line block in [bbcores_new.txt](bbcores_new.txt):
+
+```
+name fwp22_5
+cfg  ACG> 3^m 4^n 0^k 4^1
+slot k>=1 n>=2 m>=1
+core  <one transition row per state, separated by '_'>
+```
+
+| Line | Meaning |
+|---|---|
+| `name` | The core's name, as passed to `--core` |
+| `cfg` | The landmark shape; the letters before `>` are the states the head may be in (`ACG>` = `A`, `C` or `G`) |
+| `slot` | The counters in importance order (left = most important), with optional minima such as `n>=2` |
+| `core` | The transition rows, one per state, separated by `_`; every row is exactly `3 × nsym` characters (write, move `L`/`R`, next state) and `---` marks a FREE cell |
+
+Afterwards run `./bbsearch --cores` and check that the row count grew by one and that the landmark template and the importance column are correct, then search the new core:
+
+```bash
+./bbsearch --core <the-new-core> --cap 20000 --budget 2e7
+```
+
+A landmark that lies deep in the construction phase needs a larger `--budget` / `--cap`; `no landmark configuration was reached` only means the search stopped too early, not that the core cannot produce the shape. How to write each of the three landmark shapes, and the self-check script for the transition rows, are described in [docs/getting-started.md](docs/getting-started.md).
 
 ## Documentation
 
