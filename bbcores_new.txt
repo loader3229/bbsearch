@@ -73,21 +73,13 @@ core ---3LB4LC2RA4LB5LB_---3RB1LC2RA5LC1RZ_3RB1LB3LC2RC4LC5LC
 
 # f_(ω+1) cores
 
-* f_(ω+1) core fw1_3a with 7 states 3 symbols 16 non-halt transitions.
-* The input config is 1^m F> 0^n 1 with n >= 1
+* f_(ω+1) core fw1_3 with 7 states 3 symbols 16 non-halt transitions.
+* The input config is 1^m F> 1^n 2 with n >= 1
 * importance: n > m
-name fw1_3a
-cfg 1^m F> 0^n 1^1
+name fw1_3
+cfg 1^m F> 1^n 2^1
 slot n>=1 m
-core ---------_0LE2LE2RB_1RF1RC2RB_0RC1LE2RD_1RC2LE1LG_0LD1RZ---_1LD2RD2LG
-
-* f_(ω+1) core fw1_3b with 7 states 3 symbols 16 non-halt transitions.
-* The input config is 1^m F> 0^n 1 with n >= 1
-* importance: n > m
-name fw1_3b
-cfg 1^m F> 0^n 1^1
-slot n>=1 m
-core ---1LE2RA_0LE2LE2RB_1RF1RC2RB_0RC------_1RC2LE1LG_0LA1RZ---_1LD2RA2LG
+core ---1LE2RA_0LE2LE2RB_1RF1RC2RB_0RC------_1RC2LE1LG_---0LA1RZ_1LD2RA2LG
 
 * f_(ω+1) core fw1_4 with 4 states 4 symbols 13 non-halt transitions.
 * The input config is B'(k, n, m) 2^p 0 = 0^inf 3^(2m+1) 2^k B> 1^n 2^p 0 with n >= 1, p >= 1
@@ -256,19 +248,20 @@ core ---3LB4LC2RA4LB_------1LD2RA---_3RB1LB3LC2RC4LC_3RE---3LC2RC---_---3RE---4L
 
 # f_(ω*2+1) cores
 
-* f_(ω*2+1) core fwm21_3 with 10 states 3 symbols 27 non-halt transitions.
-* The input config is 1^m B> 0 2^k 1^n 0^p 1 with n >= 1, p >= 1
+* f_(ω*2+1) core fwm21_3 with 10 states 3 symbols 26 non-halt transitions.
+* The input config is 1^m B> 0 2^k 1^n 0 1^p 2 with n >= 1, p >= 1
 * importance: p > k > n > m
+* Please increase state or symbol count to search!
 name fwm21_3
-cfg 1^m B> 0 2^k 1^n 0^p 1^1
+cfg 1^m B> 0^1 2^k 1^n 0^1 1^p 2^1
 slot p>=1 k n>=1 m
-core 1LD2RG2LA_2LE2LH2RB_---1RC2RB_0RC1RD0LG_0LF1LE1LE_1RG1RI---_0RC1LH2RG_1RC2LH1LA_0RI2RI2RJ_0LJ1RZ1LA
+core 1LD2RG2LA_2LE2LH2RB_---1RC2RB_0RC1RD0LG_0LF1LE1LE_1RG1RI---_0RC1LH2RG_1RC2LH1LA_0RI2RI2RJ_---0LH1RZ
 
 * f_(ω*2+1) core fwm21_4 with 10 states 4 symbols 27 non-halt transitions.
 * The input config is 1^m B> 0 2^k 1^n 0^p 3 with n >= 1
 * importance: p > k > n > m
 name fwm21_4
-cfg 1^m B> 0 2^k 1^n 0^p 3^1
+cfg 1^m B> 0^1 2^k 1^n 0^p 3^1
 slot p k n>=1 m
 core ------------_2LE2LH2RB1RZ_0RI1RC2RB---_0RC1RD0LG---_0LF1LE1LE---_1RG1RC------_0RC1LH2RG---_1RC2LH1LJ---_2LE3RI1LI2LI_1LD2RG2LJ---
 
@@ -287,6 +280,14 @@ name fwm21_6
 cfg 5^1 BCFG(A) 2^p 5^1
 slot p k n m
 core ---3LB1LG2RA4LB1RZ_---3RB1LD2RA3LF---_3RB1LB3LC2RC4LC0LE_3RB---3LC2RC---3RE_5RC3RE---4LC------_5RB------1LF------_------1LG3LG---0LE
+
+* f_(ω*2+2) core fwm22_3 with 12 states 3 symbols 28 non-halt transitions.
+* The input config is 1^m B> 0 2^k 1^n 0 1^p 2^q 0 with n >= 1, p >= 1
+* importance: q > p > k > n > m
+name fwm22_3
+cfg 1^m B> 0^1 2^k 1^n 0^1 1^p 2^q BLANK
+slot q>=1 p k n>=1 m
+core 1LD2RG2LA_2LE2LH2RB_---1RC2RB_0RC1RD0LG_0LF1LE1LE_1RG1RI---_0RC1LH2RG_1RC2LH1LA_0RI2RI2RJ_1RZ0LH1LK_0LK2LL1LK_0LF------
 
 
 # f_(ω^2) cores
