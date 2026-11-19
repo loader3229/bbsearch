@@ -1071,7 +1071,7 @@ static void noteCfgThree(int st, int pos, int lo, int hi, long long step) {
 
 // Landmark of the KIND_ONES kind:  0^inf 1^m <head> <right[0]> <right[1]> ...
 // The head sits on the FIRST cell of the right[0] run (which may be a counter
-// run of its own, e.g. the 0^n of fw1_3a or the 2^n of fe0_5); m ones are
+// run of its own, e.g. the 1^n of fw1_3 or the 2^n of fe0_5); m ones are
 // directly to its left and nothing else, the remaining segments of the spec
 // follow to the right.  termBlank demands that the rest of the tape is blank.
 static void noteCfgOnes(int st, int pos, int lo, int hi, long long step) {
