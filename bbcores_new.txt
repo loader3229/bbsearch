@@ -153,6 +153,14 @@ cfg BCFG(A) 4^p 5^q BLANK
 slot q p>=1 k n m
 core ---3LB---2RA4LB---_1RZ3RB1LC2RA3RD---_3RB1LB3LC2RC4LC---_3RB------4LD4LC4LD
 
+* f_(ω+2) core fw2_7 with 3 states 7 symbols 18 non-halt transitions.
+* The input config is B(k, n, m) 4 5^p 6^q 0 = 0^inf 3^(2m+1) 2^k A> 1^n 4 5^p 6^q 0 with n >= 1, q >= 1
+* importance: q > p > k > n > m
+name fw2_7
+cfg BCFG(A) 4^1 5^p 6^q BLANK
+slot q>=1 p k n m
+core ---3LB5LA2RA4LB4LC5LA_1RZ3RB1LC2RA3RB4LC6LC_3RB1LB3LC2RC4LC---6LC
+
 
 # f_(ω+3) cores
 
@@ -218,13 +226,13 @@ cfg 1^m B> 0 2^k 1^n 0^1
 slot k n>=1 m
 core 1LD2RG2LA_2LE2LH2RB_---1RC2RB_0RC1RD0LG_0LF1LE1LE_1RG1RZ---_0RC1LH2RG_1RC2LH1LA
 
-* f_(ω*2) core fwm2_5 with 8 states 5 symbols 25 non-halt transitions.
-* Input config is B(k, n, m) 2 = 0^inf 3^(2m+1) 2^k A> 1^n 2 with n >= 1
+* f_(ω*2) core fwm2_5 with 6 states 5 symbols 24 non-halt transitions.
+* Input config is B'(k, n, m) 0 = 0^inf 3^(2m+1) 2^k D> 1^n 0 with n >= 1
 * importance: k > n > m
 name fwm2_5
-cfg BCFG(A) 2^1
+cfg BCFG(D) BLANK
 slot k n m
-core ---3LB1RZ2RA---_------1LD2RA---_3RB1LB3LC2RC---_3RE---3LC2RC---_---3RE---4LH---_---3LG---2RF4LG_---3RG1LH2RF2RA_3RG1LG3LH2RH4LH
+core ---3LB4LC2RA4LB_---3RB1LC2RA2RD_3RB1LB3LC2RC4LC_1RZ4LD1LE2RD2RD_3RF1LD3LE2RE---_---3RF---2RD4LC
 
 * f_(ω*2) core fwm2_6 with 6 states 6 symbols 22 non-halt transitions.
 * Input config is 0^inf 5 3^(2m+1) 2^k A> 1^n 2 with n >= 1
@@ -233,6 +241,25 @@ name fwm2_6
 cfg 5^1 BCFG(A) 2^1
 slot k n m
 core ---3LB1RZ2RA4LB---_---3RB1LD2RA3LF---_3RB1LB3LC2RC4LC0LE_3RB---3LC2RC---3RE_5RC3RE---4LC------_5RB------1LF------
+
+* f_(ω*2) core fwm2_7 with 5 states 7 symbols 28 non-halt transitions.
+* Input config is B(k, n, m) 2 = 0^inf 3^(2m+1) 2^k A> 1^n 2 with n >= 1
+* importance: k > n > m
+name fwm2_7
+cfg BCFG(A) 2^1
+slot k n m
+core ---3LB1RZ2RA6LD3LB5RA_---3RB1LD2RA---1LB1LC_3RB1LB3LC2RC---6LD1LC_6RE---3LC2RC6RD4LE5RA_6RD5RE---5LC4LD6LE5RE
+
+
+# f_(ω*2)+f_ω cores
+
+* f_(ω*2)+f_ω core fwm2fw_5 with 6 states 5 symbols 28 non-halt transitions.
+* Input config is B(k, n, m) 0 = 0^inf 3^(2m+1) 2^k A> 1^n 0 with n >= 1
+* importance: k > n > m
+name fwm2fw_5
+cfg BCFG(A) BLANK
+slot k n m
+core 1LF3LB4LC2RA4LB_---3RB1LC2RA2RD_3RB1LB3LC2RC4LC_1RZ4LD1LE2RD2RD_3RF1LD3LE2RE3LF_---3RF4LE2RD4LC
 
 
 # double f_(ω*2) cores
