@@ -111,7 +111,7 @@ static const char *SLOT_NAME[SLOT_NUM] = { "k", "n", "m", "p", "q", "r", "r5", "
 | `p` `q` `r` `s` | Lengths of the right-hand counter segments (`2^p`, `4^q`, `1^r`, `2^s`, etc.; the exact symbols are decided by each core's `cfg` line) |
 | `r5` | Length of the `5^r` run on the left |
 
-**Note that `r` and `r5` are two different slots.** In `bbcores_new.txt` both are written as `r` and are disambiguated by context: the `r` in the `slot` line of `fwp2_6` / `fwp21_6` means `r5`.
+**Note that `r` and `r5` are two different slots.** In `bbcores_new.txt` both are written as `r` and are disambiguated by context: the `r` in the `slot` line of `fwp2_6` / `fwp21_6` / `fwp21_7` / `fwp22_7` means `r5`.
 
 **The importance order** (`spec.slot[]`) comes from the `slot` line of `bbcores_new.txt`. Comparison is **lexicographic**, not by numeric magnitude. For example `fw3_4` is `p > k > n > m`, meaning: compare `p` first, then `k` if `p` is equal, and so on.
 
@@ -124,7 +124,7 @@ static const char *SLOT_NAME[SLOT_NUM] = { "k", "n", "m", "p", "q", "r", "r5", "
 ```
 
 - `[5^r]`: `L5_NONE` (none) / `L5_ONE` (exactly one 5) / `L5_MANY` (`5^r`, `r>=1`)
-- `<head>`: the head states allowed by `headMask`, decided by the `BCFG(A)` / `BCFG(B)` of the `cfg` line
+- `<head>`: the head states allowed by `headMask`, decided by the `BCFG(A)` / `BCFG(B)` / `BCFG(D)` of the `cfg` line (`fwm2_5` is the only core with the head in state `D`)
 - `<right>`: described by `spec.right[]`
 
 Right-hand segments may carry no slot (fixed-length symbols) or carry one (counters). For example `fwpw_5`'s landmark `0^inf 3^(2m+1) 2^k A> 1^n 4 2` is two fixed segments `{4,1,1,-1}` and `{2,1,-1,-1}`, with `termBlank` false — no blank is required after the `2`. `fwpw1_5a` is `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 0`: `{4,1,1,-1}` and `{2,1,-1,SLOT_P}`, with `termBlank` true — everything after `2^p` must be blank.
@@ -159,12 +159,14 @@ Typical shapes:
 
 | Core | Landmark | `right[]` | `leftSlot` |
 |---|---|---|---|
-| `fw1_3a` / `fw1_3b` | `1^m F> 0^n 1` | `{0,1,-1,SLOT_N}`, `{1,1,-1,-1}` | `SLOT_M` |
+| `fw1_3` | `1^m F> 1^n 2` | `{1,1,-1,SLOT_N}`, `{2,1,-1,-1}` | `SLOT_M` |
 | `fw2_3` | `1^m F> 0^n 1^k 2` | `{0,1,-1,SLOT_N}`, `{1,1,-1,SLOT_K}`, `{2,1,-1,-1}` | `SLOT_M` |
 | `fw3_3` | `1^m F> 0^n 1^k 2^p 0` | `{0,1,-1,SLOT_N}`, `{1,1,-1,SLOT_K}`, `{2,1,-1,SLOT_P}`, `{0,1,1,-1}` | `SLOT_M` |
 | `fw3_4` | `1^m F> 0^n 1^k 2^p 3` | the above plus `{3,1,-1,-1}` | `SLOT_M` |
 | `fwm2_3` | `1^m B> 0 2^k 1^n 0` | `{0,1,1,-1}`, `{2,1,-1,SLOT_K}`, `{1,1,-1,SLOT_N}`, `{0,1,1,-1}` | `SLOT_M` |
-| `fwm21_3` / `fwm21_4` | `1^m B> 0 2^k 1^n 0^p 1\|3` | `{0,1,1,-1}`, `{2,1,-1,SLOT_K}`, `{1,1,-1,SLOT_N}`, `{0,1,-1,SLOT_P}`, `{1\|3,1,-1,-1}` | `SLOT_M` |
+| `fwm21_3` | `1^m B> 0 2^k 1^n 0 1^p 2` | `{0,1,1,-1}`, `{2,1,-1,SLOT_K}`, `{1,1,-1,SLOT_N}`, `{0,1,1,-1}`, `{1,1,-1,SLOT_P}`, `{2,1,-1,-1}` | `SLOT_M` |
+| `fwm21_4` | `1^m B> 0 2^k 1^n 0^p 3` | `{0,1,1,-1}`, `{2,1,-1,SLOT_K}`, `{1,1,-1,SLOT_N}`, `{0,1,-1,SLOT_P}`, `{3,1,-1,-1}` | `SLOT_M` |
+| `fwm22_3` | `1^m B> 0 2^k 1^n 0 1^p 2^q 0` | `{0,1,1,-1}`, `{2,1,-1,SLOT_K}`, `{1,1,-1,SLOT_N}`, `{0,1,1,-1}`, `{1,1,-1,SLOT_P}`, `{2,1,-1,SLOT_Q}` (then blank) | `SLOT_M` |
 | `fw_3` | `1^n A> 1 0` | `{1,1,1,-1}`, `{0,1,1,-1}` | `SLOT_N` |
 | `fwp21fw_4` / `fwp22fw_4` | `1^n G> 1^m 0` | `{1,1,-1,SLOT_M}`, `{0,1,1,-1}` | `SLOT_N` |
 | `fe0_5` | `1^m B> 2^n 0^inf` | `{2,3,-1,SLOT_N}` | `SLOT_M` |

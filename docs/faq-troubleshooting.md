@@ -196,7 +196,7 @@ Different families of champion machines write their "construction phase" in diff
 
 - `KIND_BCFG`: `0^inf 3^(2m+1) 2^k <head> 1^n <right>` — the classic shape
 - `KIND_THREE`: `0^inf <head> 3^n 0^inf` — the head lands on the first cell of the `3^n` run and everything else is blank; the counter segment is right under the head (`fwp21_4` / `fwp21_5` are its multi-segment variants: `0^inf <head> 3^m 0^n <sentinel>`)
-- `KIND_ONES`: `0^inf 1^m <head> <right config>` — there is a run of `1^m` left of the head and the head cell is the **first cell** of the right-hand first segment; the head segment can be blank (`0^n` in `fw1_3a`, the lone `0` in `fwm2_3`), a `1` (`fw_3`) or a `2` (`2^n` in `fe0_5`)
+- `KIND_ONES`: `0^inf 1^m <head> <right config>` — there is a run of `1^m` left of the head and the head cell is the **first cell** of the right-hand first segment; the head segment can be a run of `1`s (`1^n` in `fw1_3`), blank (the lone `0` in `fwm2_3`), a `1` (`fw_3`) or a `2` (`2^n` in `fe0_5`)
 
 ### How is the importance order compared?
 

@@ -2,11 +2,11 @@
 
 A Busy Beaver **core** landmark searcher — a depth-first search over a given Turing machine core (core), looking for the **maximum landmark configuration** that core can produce.
 
-This is a **single-file C++ command-line tool**. Core data comes from loader3229's Busy Beaver core list ([bbcores_new.txt](bbcores_new.txt)); the program reads the cores from that list at run time (currently 48), and can search them one at a time or all at once.
+This is a **single-file C++ command-line tool**. Core data comes from loader3229's Busy Beaver core list ([bbcores_new.txt](bbcores_new.txt)); the program reads the cores from that list at run time (currently 56), and can search them one at a time or all at once.
 
 ## Features
 
-- **48 cores**: covering the `f_ω`, `f_(ω+1)` … `f_(ω*2+1)`, `f_(ω^2)`, `f_(ω^2+1)`, `f_(ω^2+2)`, `f_(ω^2+3)`, `f_(ω^ω)`, `f_(ω^ω+1)`, `f_(ε0)` families, with 3–17 states and 3–7 symbols
+- **56 cores**: covering the `f_ω`, `f_(ω+1)` … `f_(ω*2+2)`, `f_(ω^2)`, `f_(ω^2+1)`, `f_(ω^2+2)`, `f_(ω^2+3)`, `f_(ω^ω)`, `f_(ω^ω+1)`, `f_(ε0)` families, with 3–17 states and 3–8 symbols
 - **Core table comes from the list file**: the program reads [bbcores_new.txt](bbcores_new.txt) at run time (each core is a `name` / `cfg` / `slot` / `core` four-line block); `--cores-file` changes the path; there is no built-in copy in the code
 - **New cores can be added by hand**: discovering a Turing machine core that is not in the list yet is enough — append its four-line block to `bbcores_new.txt` and `bbsearch` searches that core's landmark configuration on the next run, with no recompilation
 - **Three landmark structures**: the tool recognises `0^inf 3^(2m+1) 2^k <head> 1^n <right>` (`KIND_BCFG`), `0^inf <head> 3^n 0^inf` (`KIND_THREE`) and `0^inf 1^m <head> <right config>` (`KIND_ONES`, the head cell is the first cell of the right-hand first segment) automatically
@@ -113,7 +113,7 @@ A landmark that lies deep in the construction phase needs a larger `--budget` / 
 - [docs/architecture.md](docs/architecture.md) — internal structure and algorithms
 - [docs/getting-started.md](docs/getting-started.md) — local development guide
 - [docs/cli-reference.md](docs/cli-reference.md) — command-line option reference
-- [docs/cores.md](docs/cores.md) — landmarks and measured reachability of the 48 cores
+- [docs/cores.md](docs/cores.md) — landmarks and measured reachability of the 56 cores
 - [docs/faq-troubleshooting.md](docs/faq-troubleshooting.md) — common problems and troubleshooting
 
 The rulebook for AI collaborators is in [AGENTS.md](AGENTS.md).

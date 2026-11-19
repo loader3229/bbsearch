@@ -52,7 +52,7 @@ On Windows the compiler appends `.exe` itself, so the produced binary is `bbsear
 ```bash
 cd /path/to/bbsearch
 
-# List the 48 cores: name / states / symbols / landmark template / importance order
+# List the 56 cores: name / states / symbols / landmark template / importance order
 ./bbsearch --cores
 
 # Run a fast small core to confirm it produces a result
@@ -214,7 +214,7 @@ g++ -O3 -march=native -std=c++11 -o bbsearch bbsearch.cpp
 
 (On Windows the binary is `bbsearch.exe` — write `.\bbsearch.exe` instead of `./bbsearch`.)
 
-Expectation for step 3: `--cores` prints **48 rows** (plus one header row).
+Expectation for step 3: `--cores` prints **56 rows** (plus one header row).
 
 ## 7. Performance tips
 

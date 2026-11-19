@@ -25,7 +25,7 @@
 ```
 bbsearch/
 ├── bbsearch.cpp        # the only source file: core file parsing + search engine + CLI
-├── bbcores_new.txt     # data source: the core list (48 cores; name/cfg/slot/core four lines per block)
+├── bbcores_new.txt     # data source: the core list (56 cores; name/cfg/slot/core four lines per block)
 ├── bbsearch            # build artifact (bbsearch.exe on Windows; not committed, a gitignore candidate)
 ├── README.md           # project description for humans
 ├── AGENTS.md           # this file (AI entry point)
@@ -50,7 +50,7 @@ cd /path/to/bbsearch
 # Build
 g++ -O3 -march=native -std=c++11 -o bbsearch bbsearch.cpp
 
-# List the 48 cores (mandatory after changing the core table)
+# List the 56 cores (mandatory after changing the core table)
 ./bbsearch --cores
 
 # Single core search
@@ -85,7 +85,7 @@ Follow the style already in the file; do not introduce a new system:
 
 ```bash
 # 1) Core list self-check (core count, each core's state/symbol counts and row lengths)
-./bbsearch --cores        # expect 48 rows + 1 header row; landmark and importance columns correct
+./bbsearch --cores        # expect 56 rows + 1 header row; landmark and importance columns correct
 # 2) Actual search
 ./bbsearch --core <changed core> --cap 20000 --budget 2e7
 # 3) Full smoke run (confirm no crash)
@@ -96,7 +96,7 @@ Follow the style already in the file; do not introduce a new system:
 
 When you change a core in `bbcores_new.txt` (the `name`/`cfg`/`slot`/`core` four lines), the program reads it directly at run time, so **no recompilation is needed**; after the change run at least `--cores` and the `--all` smoke test.
 
-The transition rows of every block in the core list must be checked **character by character** (each row length must be `3 × nsym`, the number of rows must equal the state count) — checking 48 multi-row strings by hand is extremely error-prone. An automated self-check script is in [docs/getting-started.md](docs/getting-started.md) under "Core list self-check script".
+The transition rows of every block in the core list must be checked **character by character** (each row length must be `3 × nsym`, the number of rows must equal the state count) — checking 56 multi-row strings by hand is extremely error-prone. An automated self-check script is in [docs/getting-started.md](docs/getting-started.md) under "Core list self-check script".
 
 ## 7. Git workflow and commit conventions
 
@@ -174,7 +174,7 @@ The transition rows of every block in the core list must be checked **character 
 
 ## 11. Miscellaneous
 
-- **The data source is `bbcores_new.txt`**: the program reads it at run time (`name` / `cfg` / `slot` / `core` four lines per block), and **the code contains no built-in copy**. The current txt holds **48** cores. Cores added to the list are appended to the end of the run-time table; when two blocks share a name, the later one in the file wins.
+- **The data source is `bbcores_new.txt`**: the program reads it at run time (`name` / `cfg` / `slot` / `core` four lines per block), and **the code contains no built-in copy**. The current txt holds **56** cores. Cores added to the list are appended to the end of the run-time table; when two blocks share a name, the later one in the file wins.
 - **Semantics of the new format** (implemented by the parser `parseCfg()` / `buildSpec()`):
   - `<symbol>^<count>` = exactly that many cells (`4^1` = one 4); `<symbol>^<counter>` = length determined by that counter (`2^p`); `BLANK` = everything after the last segment must be blank (`termBlank`).
   - **Last-segment rule**: when the `cfg` line does **not** end with `BLANK`, the last fixed segment **without a slot** (`1^1` / `2^1` / `3^1` / `5^1`) is not locked to exactly one cell but means "≥1 cell" (`{sym,1,-1,-1}`, i.e. `maxCnt = -1`). `BLANK` and `KIND_THREE` (whose tail is always blank) are unaffected; a trailing `0` (blank cell) is still treated as a sentinel.
@@ -183,16 +183,16 @@ The transition rows of every block in the core list must be checked **character 
   - The `slot` line gives the importance order (lexicographic) and the counter minimums (`p>=1`); the minimum is written into the corresponding segment's `minCnt`.
   - The `r` in the `slot` line: when the cfg has a `5^r` prefix it means `r5`, otherwise it means the `r` of the right-hand `1^r`.
   - The trailing `0^1` in `fw_3`'s `cfg 1^n A> 1^1 0^1` is a blank **sentinel** segment (only that one cell is checked for being blank); the blank region after it is not required.
-- **The landmark shape, slot order and special spellings of each core** (`fw1_4` / `fw2_4` / `fw2_5`'s `B'` family, `fw1fw_4`'s start state, the left-hand `5^r` of `fwp2_6` / `fwp21_6`, etc.) are documented in [docs/cores.md](docs/cores.md) under "Core table" and "Special core notes"; the `cfg` / `slot` lines in the txt are authoritative.
+- **The landmark shape, slot order and special spellings of each core** (`fw1_4` / `fw2_4` / `fw2_5`'s `B'` family, `fwm2_5`'s `D` head state, `fw1fw_4`'s start state, the left-hand `5^r` of `fwp2_6` / `fwp21_6` / `fwp21_7` / `fwp22_7`, etc.) are documented in [docs/cores.md](docs/cores.md) under "Core table" and "Special core notes"; the `cfg` / `slot` lines in the txt are authoritative.
 - **`dfwpw_5` is the double `f_(ω^ω)` core**: landmark `0^inf 3^(2m+1) 2^k A> 1^n 4 3 0`, importance order `k > n > m`, `right[]` = `{4,1,1,-1}`, `{3,1,1,-1}`, `termBlank` is true. The txt's `cfg` reads `BCFG(A) 4^1 3^1 BLANK` — the trailing blank is expressed by `BLANK`, and you **must not** add an explicit `0^1` segment: the `KIND_BCFG` matching branch counts the number of consecutive blank cells (far more than 1), so it would never match. `H0` / `K0` in the core are FREE cells; `--fix H0=3RJ,K0=3LI` completes them into the full machine corresponding to the txt.
 - **`KIND_BCFG`'s `termBlank` checks the entire right side**: after the last segment, the scan to the right must find only blanks, so `4 3 0 1` (writing `1` one cell after the `3`) is not `4 3 0 0`. Different FREE completions of the same core produce different right-hand shapes.
-- **`SLOT_R5` (`r5`) and `SLOT_R` (`r`) are two different slots**: `r` counts the right-hand `1^r` segment, `r5` counts the left-hand `5^r` segment. In the txt both are written as `r` and are disambiguated by context — the `r` in the `slot` line of `fwp2_6` / `fwp21_6` means `r5`.
+- **`SLOT_R5` (`r5`) and `SLOT_R` (`r`) are two different slots**: `r` counts the right-hand `1^r` segment, `r5` counts the left-hand `5^r` segment. In the txt both are written as `r` and are disambiguated by context — the `r` in the `slot` line of `fwp2_6` / `fwp21_6` / `fwp21_7` / `fwp22_7` means `r5`.
 - **`KIND_ONES` is the only "left-hand run of `1`" shape**: the landmark looks like `0^inf 1^m <head> <right config>`, the head cell is the **first cell** of the `right[0]` segment (notation convention: the segment after the `<head>` marker starts at the head cell), the head has `m` cells of `1` immediately to its left (`m >= 1`) and everything further left must be blank; `m` is recorded in `leftSlot`, and `right[0]` and the following segments are recorded in `sp.right[]`.
-- **The head segment of `KIND_ONES` (`right[0]`) has three forms**: a counter segment (`0^n` in `fw1_3a`, `2^n` in `fe0_5`, `maxCnt = -1`, unbounded), a fixed single blank cell (the lone `0` in `fwm2_3`), or a fixed single symbol (the `1` in `fw_3`).
+- **The head segment of `KIND_ONES` (`right[0]`) has three forms**: a counter segment (`1^n` in `fw1_3`, `2^n` in `fe0_5`, `maxCnt = -1`, unbounded), a fixed single blank cell (the lone `0` in `fwm2_3`), or a fixed single symbol (the `1` in `fw_3`).
 - **When the last segment of `KIND_ONES` is a blank cell without a slot** (`fw_3`'s `1^n A> 1 0`), it is treated as a **sentinel**: only that one cell is checked for being blank, and the blank region after it does not count towards the length.
 - **`KIND_THREE` (`fwp2_4`) has its counter segment right under the head**: `right[]` holds a single segment `{3, 3, -1, SLOT_N}`, the head cell is the first cell of that `3^n` run and the rest of the tape must be blank; `n >= 3`.
 - **`KIND_THREE` is also multi-segment** (`fwp21_4` / `fwp21_5` / `fwp22_4` / `fwp22_5` / `fwp23_4`): `right[]` = `{3,1,-1,SLOT_M}`, `{0,<n minimum>,-1,SLOT_N}`, several counter segments, and finally a sentinel segment (a fixed single cell), after which the tape must still be blank. The per-core `right[]` values are in the txt and in docs/cores.md.
-- **The left-hand `1^n` of `KIND_ONES` can be contiguous with the right-hand `1^m`** (`fwp21fw_4` / `fwp22fw_4`): in the landmark `1^n G> 1^m 0`, `1^n` and `1^m` are **the same run of `1`s**, with the head cell inside it — `n` cells of `1` to the left of the head, and `m` cells of `1` from the head cell rightwards (the `m` count includes the head cell); the trailing `0` is the blank sentinel segment `{0,1,1,-1}` of `right[]`.
+- **The left-hand `1^n` of `KIND_ONES` can be contiguous with the right-hand `1^m`** (`fwp21fw_4` / `fwp22fw_4` / `fw1_3`): in the landmark `1^n G> 1^m 0`, `1^n` and `1^m` are **the same run of `1`s**, with the head cell inside it — `n` cells of `1` to the left of the head, and `m` cells of `1` from the head cell rightwards (the `m` count includes the head cell); the trailing `0` is the blank sentinel segment `{0,1,1,-1}` of `right[]`. `fw1_3` uses the same convention with the roles of the two counters swapped (`1^m F> 1^n 2`).
 - **The maximum state count is `MAXST = 25`** (A..Y): `'Z'` in a transition row is the "write then halt" marker and **is not an ordinary state**; so `'Y'` is the 25th ordinary state, and the `'Z' → HALT_Z` encoding in `setRow()` is compatible with this by construction. `--startstate` accepts A..Y.
 - **Measured reachability** (which cores reach their landmark under the default budget, the steps / nodes / abort numbers, and suggestions for the next round) is in [docs/cores.md](docs/cores.md) under "Measured reachability" and "Cores with no landmark found" — those are dated measurement results and do not belong here.
 - **`buildStartConfig()`'s `KIND_BCFG` branch must write from right to left**: first `2^k`, then `3^(2m+1)`, finally `5^r` — the landmark requires `0^inf 3^(2m+1) 2^k A>` (the `3` segment leftmost, the `2` segment adjacent to the head); writing them the other way round makes `--start cfg` build the wrong input-configuration shape. This only affects `--start cfg` mode; blank-tape searches are unaffected.
