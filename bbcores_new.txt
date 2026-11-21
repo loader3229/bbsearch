@@ -538,6 +538,14 @@ cfg BCFG(A) 4^1 2^1
 slot k n m
 core ---3LB1RZ2RA3LL_---3RB1LD2RA---_3RB1LB3LC2RC---_2RE---3LC2RC---_3RB2RE2RE4RF---_1LG1RF3LG3RF4LG_2RJ0LH2LG2LI4LK_---1LH1LG3LH4LH_---1LI3LG3LI4LI_---1RJ2RJ3RJ4RF_---1LK3LE3LK---_3RB1LL1LL1LL---
 
+* f_(ω^ω) core fwpw_7 with 11 states 7 symbols 46 non-halt transitions.
+* The input config is B(k, n, m) 4 2 = 0^inf 3^(2m+1) 2^k A> 1^n 4 2 with n >= 1
+* importance: k > n > m
+name fwpw_7
+cfg BCFG(A) 4^1 2^1
+slot k n m
+---3LB1RZ2RA3LK------_---3RB1LD2RA---------_3RB1LB3LC2RC---------_5RE1LD3LC2RC---3LE3LD_3RB5RE---4RF---5RE---_1LG1RF3LG6RF4LG------_5RJ0LH------4LD5LG2LI_---1LH------4LH1LG3LH_---1LI------4LI3LG3LI_---1RJ---6RJ4RF5RJ---_3RB1LK1LK1LK---------
+
 * f_(ω^ω) core fwpw_8 with 8 states 8 symbols 46 non-halt transitions.
 * The input config is B(k, n, m) 4 2 = 0^inf 3^(2m+1) 2^k A> 1^n 4 2 with n >= 1
 * importance: k > n > m
@@ -579,7 +587,15 @@ cfg BCFG(A) 4^1 2^p 5^1
 slot p>=1 k n m
 core ---3LB4LH2RA3LL1RZ_---3RB1LD2RA------_3RB1LB3LC2RC------_2RE---3LC2RC------_3RB2RE2RE4RF------_1LG1RF3LG3RF4LG---_2RJ0LH2LG2LI4LK---_---1LH1LG3LH4LH---_2RC1LI3LG3LI4LI---_---1RJ2RJ3RJ4RF---_---1LK3LE3LK------_3RB1LL1LL1LL------
 
-* f_(ω^ω+1) core fwpw1_8 with 9 states 8 symbols 48 non-halt transitions.
+* f_(ω^ω+1) core fwpw1_7 with 11 states 7 symbols 52 non-halt transitions.
+* The input config is B(k, n, m) 4 2^p 5 = 0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 5 with n >= 1, p >= 1
+* importance: p > k > n > m
+name fwpw1_7
+cfg BCFG(A) 4^1 2^p 5^1
+slot p>=1 k n m
+core ---3LB4LH2RA3LK1RZ---_---3RB1LD2RA---------_3RB1LB3LC2RC---------_5RE1LD3LC2RC---3LE3LD_3RB5RE2RE4RF1LB5RE---_1LG1RF3LG6RF4LG------_5RJ0LH------4LD5LG2LI_3RE1LH4LH2LH4LH1LG3LH_---1LI------4LI3LG3LI_---1RJ---6RJ4RF5RJ---_3RB1LK1LK1LK---------
+
+* f_(ω^ω+1) core fwpw1_8 with 9 states 8 symbols -- non-halt transitions.
 * importance: k > n > m
 name fwpw1_8
 cfg BCFG(AI) 4^1 2^p 5^1
