@@ -115,7 +115,7 @@ struct CoreSpec {
     int      kind;
     int      left5;        // L5_*
     unsigned headMask;     // allowed head states (bit s = state s)
-    Seg      right[6];
+    Seg      right[10];
     int      nright;
     bool     termBlank;    // require a blank cell right after the last segment
     int      slot[8];      // counter slots in importance order (largest first)
@@ -304,7 +304,7 @@ static bool parseCfg(const std::string &line, CfgDesc &cd, std::string &err) {
                 sg.name = cnt;
             }
         }
-        if (cd.segs.size() >= 6) { err = "too many segments in the cfg line"; return false; }
+        if (cd.segs.size() >= 10) { err = "too many segments in the cfg line"; return false; }
         cd.segs.push_back(sg);
     }
     return true;
