@@ -334,13 +334,13 @@ cfg 5^1 BCFG(A) 2^p 5^1 BLANK
 slot p>=1 k n m
 core ---3LB1LF2RA4LB5RC1LF_1RZ3RB1LD2RA3LF------_3RB1LB3LC2RC4LC0LE3RD_3RB2RA3LC2RC---3RE---_5RC3RE---4LC---------_5RB---6LA1LF---------
 
-* f_(ω*2+1) core fwm21_8 with 5 states 8 symbols 28 non-halt transitions.
-* Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 2 with n >= 1, p >= 1
+* f_(ω*2+1) core fwm21_8 with 5 states 8 symbols 29 non-halt transitions.
+* Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 4^1 with n >= 1, p >= 1
 * importance: p > k > n > m
 name fwm21_8
-cfg BCFG(A) 7^p 2^1
+cfg BCFG(A) 7^p 4^1
 slot p>=1 k n m
-core ---3LB1RZ2RA6LE3LC5RA7LB_---3RB1LD2RA---------3LC_3RB1LB3LC2RC---1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_---5RE---5LE6RE4LD5RA7LC
+core ---3LB---2RA6LE3LC5RA7LB_---3RB1LD2RA---------3LC_3RB1LB3LC2RC1RZ1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_---5RE---5LE6RE4LD5RA7LC
 
 * f_(ω*2+1)+f_(ω+1) core fwm21fw1_7 with 6 states 7 symbols 33 non-halt transitions.
 * Input config is 0^inf 3^(2m+1) 2^k B> 1^n 2^1 4^p 2^1 0^inf with n >= 1
@@ -366,13 +366,12 @@ cfg BCFG(B) 2^1 4^p 3^1 5^1 BLANK
 slot p k n m
 core 5LF6LA5RA---6RA4LD5RB_1RZ3LE6LC2RB6LA1LE5RB_6RA4RC4LC4LC4LA6LC5RC_3RE1LE3LD2RD4LA6LC5RC_6RA3RE1LD2RB2RE2LE2LE_---------------5LF5RE
 
-* double f_(ω*2+1) core dfwm21_8 with 5 states 8 symbols 28 non-halt transitions.
-* Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 0^inf with n >= 1, p >= 1
-* importance: p > k > n > m
-name dfwm21_8
+* double f_(ω*2+1) core dfwm21_8 with 5 states 8 symbols 33 non-halt transitions.
+* Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 4^1 with n >= 1, p >= 1
+* name dfwm21_8
 cfg BCFG(A) 7^p BLANK
 slot p>=1 k n m
-core 2LE3LB1RZ2RA6LE3LC5RA7LB_5LA3RB1LD2RA---------3LC_3RB1LB3LC2RC---1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_4LD5RE7LE5LE6RE4LD5RA7LC
+core 2LE3LB7LA2RA6LE3LC5RA7LB_2LD3RB1LD2RA---------3LC_3RB1LB3LC2RC1RZ1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_---5RE4LA5LE6RE4LD5RA7LC
 
 # f_(ω*2+2) cores
 
