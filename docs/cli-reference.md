@@ -35,7 +35,7 @@ Running without any option prints the usage message and exits with code 1.
 
 Selects the core to search. Default `fw1_6`.
 
-The 56 core names:
+The 80 core names:
 
 ```
 fw_4      fw_3      dfw_5     dfw_4     tfw_5     tfw_6
@@ -48,16 +48,22 @@ fwm2_3    fwm2_5    fwm2_6    fwm2_7
 fwm2fw_5
 dfwm2_5
 fwm21_3   fwm21_4   fwm21_5   fwm21_6   fwm21_7
+fwm21_7i  fwm21_8   fwm21fw1_7 fwm21dfw1_7 fwm21tfw1_7
+dfwm21_8
 fwm22_3   fwm22_8
-fwp2_4    fwp2_5    fwp2_6    fwp21_4   fwp21_5
-fwp21_6   fwp21_7   fwp21fw_4 fwp21fw_6 fwp22_4
-fwp22_5   fwp22_7   fwp22fw_4 fwp23_4   fwpw_5
-dfwpw_5   fwpw1_5a  fwpw1_5b  fwpw1_6   fe0_5
+fwp2_3    fwp2_4    fwp2_5    fwp2_6    fwp21_3
+fwp21_4   fwp21_5   fwp21_6   fwp21_7   fwp21fw_4
+fwp21fw_6 fwp22_4   fwp22_5   fwp22_7   fwp22fw_4
+fwp23_4   fwpw_4    fwpw_5    fwpw_7    fwpw_8
+dfwpw_5   fwpw1_4   fwpw1_5a  fwpw1_5b  fwpw1_6
+fwpw1_7   fwpw1_8   fwpw1fwpw_4 fwpw2_6
+fe0_5_old fe0_5     fe01_5    fe01_6    fe01_7
+fe01_soc_7 fe1_6    fe1_7     fe1_8
 ```
 
 ### `--all`
 
-Searches all 56 cores in turn.
+Searches all 80 cores in turn.
 
 - The state count used per core = `max(--states, the core's fixed state count)`
 - The symbol count used per core = `--symbols` (if given) or the core's own symbol count
@@ -240,7 +246,7 @@ It errors out when it conflicts with the core's existing definition (`fix '...' 
 
 | Option | Default | Range | Description |
 |---|---|---|---|
-| `--core NAME` | `fw1_6` | One of the 56 core names, or an index | Selects the core |
+| `--core NAME` | `fw1_6` | One of the 80 core names, or an index | Selects the core |
 | `--all` | — | — | Searches all cores |
 | `--cores` | — | — | Lists the cores and exits |
 | `--cores-file PATH` | `bbcores_new.txt` | Path | The file the core table and landmark specs are read from |

@@ -1,6 +1,6 @@
 # Core List and Measured Reachability
 
-This document lists all 56 cores the program supports: **landmark shape, counter importance order, head state, and measured reachability under the default search budget**. The core definitions come from [bbcores_new.txt](../bbcores_new.txt) (read at run time; the code contains no built-in copy).
+This document lists all 80 cores the program supports: **landmark shape, counter importance order, head state, and measured reachability under the default search budget**. The core definitions come from [bbcores_new.txt](../bbcores_new.txt) (read at run time; the code contains no built-in copy).
 
 The "Landmark" column is the normalised spelling of the txt's `cfg` line: `KIND_ONES` omits the leading `0^inf`, and trailing blanks are written uniformly as `0` (the program prints `0^inf`). When the cfg does not end with `BLANK`, the last fixed segment without a slot is interpreted by the **last-segment rule** as "≥1 cell" rather than "exactly one cell" (for example the trailing `1` of `1^m F> 0^n 1`).
 
@@ -8,7 +8,7 @@ The "Landmark" column is the normalised spelling of the txt's `cfg` line: `KIND_
 
 - [Core table](#core-table)
 - [Grouped by family](#grouped-by-family)
-- [Measured reachability (2026-11-19)](#measured-reachability-2026-11-19)
+- [Measured reachability (2026-11-25)](#measured-reachability-2026-11-25)
 - [Cores with no landmark found](#cores-with-no-landmark-found)
 - [Special core notes](#special-core-notes)
 
@@ -53,29 +53,53 @@ The "Landmark" column is the normalised spelling of the txt's `cfg` line: `KIND_
 | 30 | `fwm21_4` | 10 | 4 | `1^m B> 0 2^k 1^n 0^p 3` | p > k > n > m |
 | 31 | `fwm21_5` | 8 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4^p 0` | p > k > n > m |
 | 32 | `fwm21_6` | 7 | 6 | `0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 5` | p > k > n > m |
-| 33 | `fwm21_7` | 6 | 7 | `0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 5 0` | p > k > n > m |
-| 34 | `fwm22_3` | 12 | 3 | `1^m B> 0 2^k 1^n 0 1^p 2^q 0` | q > p > k > n > m |
-| 35 | `fwm22_8` | 6 | 8 | `0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 7^q 5 0` | q > p > k > n > m |
-| 36 | `fwp2_4` | 8 | 4 | `0^inf A\|C\|G> 3^n 0` | n |
-| 37 | `fwp2_5` | 8 | 5 | `0^inf C\|G> 3^n 0` | n |
-| 38 | `fwp2_6` | 7 | 6 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2` | r5 > k > n > m |
-| 39 | `fwp21_4` | 10 | 4 | `0^inf A\|C\|G> 3^m 0^n 1 0` | n > m |
-| 40 | `fwp21_5` | 9 | 5 | `0^inf A\|C\|G> 3^m 0^n 4 0` | n > m |
-| 41 | `fwp21_6` | 8 | 6 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5` | p > r5 > k > n > m |
-| 42 | `fwp21_7` | 7 | 7 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5 0` | p > r5 > k > n > m |
-| 43 | `fwp21fw_4` | 11 | 4 | `1^n G> 1^m 0` | n > m |
-| 44 | `fwp21fw_6` | 8 | 6 | `0^inf 3^(2m+1) 2^k A> 1^n 4 0` | k > n > m |
-| 45 | `fwp22_4` | 11 | 4 | `0^inf A\|C\|G> 3^m 0^n 1^k 2 0` | k > n > m |
-| 46 | `fwp22_5` | 10 | 5 | `0^inf A\|C\|G> 3^m 4^n 0^k 4 0` | k > n > m |
-| 47 | `fwp22_7` | 8 | 7 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5^q 6` | q > p > r5 > k > n > m |
-| 48 | `fwp22fw_4` | 12 | 4 | `1^n G> 1^m 0` | n > m |
-| 49 | `fwp23_4` | 12 | 4 | `0^inf A\|C\|G> 3^m 0^n 1^k 2^p 3 0` | p > k > n > m |
-| 50 | `fwpw_5` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | k > n > m |
-| 51 | `dfwpw_5` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 3 0` | k > n > m |
-| 52 | `fwpw1_5a` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 0` | p > k > n > m |
-| 53 | `fwpw1_5b` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 0^p 2` | p > k > n > m |
-| 54 | `fwpw1_6` | 12 | 6 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 5` | p > k > n > m |
-| 55 | `fe0_5` | 17 | 5 | `1^m B> 2^n 0` | n > m |
+| 33 | `fwm21_7` | 5 | 7 | `0^inf 3^(2m+1) 2^k B> 1^n 2^p 0` | p > k > n > m |
+| 34 | `fwm21_7i` | 6 | 7 | `0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 5 0` | p > k > n > m |
+| 35 | `fwm21_8` | 5 | 8 | `0^inf 3^(2m+1) 2^k A> 1^n 7^p 4` | p > k > n > m |
+| 36 | `fwm21fw1_7` | 6 | 7 | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 2 0` | p > k > n > m |
+| 37 | `fwm21dfw1_7` | 6 | 7 | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 1 2 0` | p > k > n > m |
+| 38 | `fwm21tfw1_7` | 6 | 7 | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 5 0` | p > k > n > m |
+| 39 | `dfwm21_8` | 5 | 8 | `0^inf 3^(2m+1) 2^k A> 1^n 7^p 0` | p > k > n > m |
+| 40 | `fwm22_3` | 12 | 3 | `1^m B> 0 2^k 1^n 0 1^p 2^q 0` | q > p > k > n > m |
+| 41 | `fwm22_8` | 6 | 8 | `0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 7^q 5 0` | q > p > k > n > m |
+| 42 | `fwp2_3` | 16 | 3 | `1^n P> 1^m 0` | n > m |
+| 43 | `fwp2_4` | 8 | 4 | `0^inf A\|C\|G> 3^n 0` | n |
+| 44 | `fwp2_5` | 8 | 5 | `0^inf C\|G> 3^n 0` | n |
+| 45 | `fwp2_6` | 7 | 6 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2` | r5 > k > n > m |
+| 46 | `fwp21_3` | 19 | 3 | `1^n P> 1^m 0 1^k 0` | k > n > m |
+| 47 | `fwp21_4` | 10 | 4 | `0^inf A\|C\|G> 3^m 0^n 1 0` | n > m |
+| 48 | `fwp21_5` | 9 | 5 | `0^inf A\|C\|G> 3^m 0^n 4 0` | n > m |
+| 49 | `fwp21_6` | 8 | 6 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5` | p > r5 > k > n > m |
+| 50 | `fwp21_7` | 7 | 7 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5 0` | p > r5 > k > n > m |
+| 51 | `fwp21fw_4` | 11 | 4 | `1^n G> 1^m 0` | n > m |
+| 52 | `fwp21fw_6` | 8 | 6 | `0^inf 3^(2m+1) 2^k A> 1^n 4 0` | k > n > m |
+| 53 | `fwp22_4` | 11 | 4 | `0^inf A\|C\|G> 3^m 0^n 1^k 2 0` | k > n > m |
+| 54 | `fwp22_5` | 10 | 5 | `0^inf A\|C\|G> 3^m 4^n 0^k 4 0` | k > n > m |
+| 55 | `fwp22_7` | 8 | 7 | `0^inf 5^r 3^(2m+1) 2^k A> 1^n 2^p 5^q 6` | q > p > r5 > k > n > m |
+| 56 | `fwp22fw_4` | 12 | 4 | `1^n G> 1^m 0` | n > m |
+| 57 | `fwp23_4` | 12 | 4 | `0^inf A\|C\|G> 3^m 0^n 1^k 2^p 3 0` | p > k > n > m |
+| 58 | `fwpw_4` | 21 | 4 | `0^inf 3^(2m+1) 2^k A> 1^n 2` | k > n > m |
+| 59 | `fwpw_5` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | k > n > m |
+| 60 | `fwpw_7` | 11 | 7 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | k > n > m |
+| 61 | `fwpw_8` | 8 | 8 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | k > n > m |
+| 62 | `dfwpw_5` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 3 0` | k > n > m |
+| 63 | `fwpw1_4` | 21 | 4 | `0^inf 3^(2m+1) 2^k I> 1^n 2 0 2^p 0` | p > k > n > m |
+| 64 | `fwpw1_5a` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 0` | p > k > n > m |
+| 65 | `fwpw1_5b` | 12 | 5 | `0^inf 3^(2m+1) 2^k A> 1^n 4 0^p 2` | p > k > n > m |
+| 66 | `fwpw1_6` | 12 | 6 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 5` | p > k > n > m |
+| 67 | `fwpw1_7` | 11 | 7 | `0^inf 3^(2m+1) 2^k A> 1^n 4 2^p 5` | p > k > n > m |
+| 68 | `fwpw1_8` | 9 | 8 | `0^inf 3^(2m+1) 2^k A\|I> 1^n 4 2^p 5` | p > k > n > m |
+| 69 | `fwpw1fwpw_4` | 21 | 4 | `0^inf 3^(2m+1) 2^k I> 1^n 2 1 0` | k > n > m |
+| 70 | `fwpw2_6` | 13 | 6 | `0^inf 3^(2m+1) 2^k B> 1^n 4 2^p 5^q 0` | q > p > k > n > m |
+| 71 | `fe0_5_old` | 17 | 5 | `1^m B> 2^n 0` | n > m |
+| 72 | `fe0_5` | 16 | 5 | `1^m B> 2^n 0` | n > m |
+| 73 | `fe01_5` | 18 | 5 | `1^k J> 1^m 3 2^n 4 0` | k > n > m |
+| 74 | `fe01_6` | 18 | 6 | `1^m B> 5^k 2^n 0` | k > n > m |
+| 75 | `fe01_7` | 17 | 7 | `1^n B> 5 2^m 0` | n > m |
+| 76 | `fe01_soc_7` | 17 | 7 | `1^m N> 1^n 5^p 0` | n > m > p |
+| 77 | `fe1_6` | 21 | 6 | `1^m B> 5^n 0` | n > m |
+| 78 | `fe1_7` | 20 | 7 | `1^m B> 5^n 0` | n > m |
+| 79 | `fe1_8` | 19 | 8 | `1^m B> 5^n 0` | n > m |
 
 > The order of the table matches `bbcores_new.txt` exactly — that file is the only source of core definitions.
 
@@ -94,21 +118,29 @@ The "Landmark" column is the normalised spelling of the txt's `cfg` line: `KIND_
 | `f_(ω*2)` | `fwm2_3`, `fwm2_5`, `fwm2_6`, `fwm2_7` | — |
 | `f_(ω*2)+f_ω` | `fwm2fw_5` | Landmark `0^inf 3^(2m+1) 2^k A> 1^n 0`, the right side is a blank cell |
 | `double f_(ω*2)` | `dfwm2_5` | — |
-| `f_(ω*2+1)` | `fwm21_3`, `fwm21_4`, `fwm21_5`, `fwm21_6`, `fwm21_7` | — |
+| `f_(ω*2+1)` | `fwm21_3`, `fwm21_4`, `fwm21_5`, `fwm21_6`, `fwm21_7`, `fwm21_7i`, `fwm21_8` | `fwm21_7` is the 5-state `B`-head variant, `fwm21_7i` the older 6-state `A`-head one with the left-hand `5` |
+| `f_(ω*2+1)+f_(ω+1)` | `fwm21fw1_7` | Landmark `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 2 0` |
+| `f_(ω*2+1)+double f_(ω+1)` | `fwm21dfw1_7` | Landmark `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 1 2 0` |
+| `f_(ω*2+1)+triple f_(ω+1)` | `fwm21tfw1_7` | Landmark `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 5 0` |
+| `double f_(ω*2+1)` | `dfwm21_8` | Landmark `0^inf 3^(2m+1) 2^k A> 1^n 7^p 0` |
 | `f_(ω*2+2)` | `fwm22_3`, `fwm22_8` | `fwm22_3` is a `KIND_ONES` core (`1^m B> 0 2^k 1^n 0 1^p 2^q 0`), `fwm22_8` a `KIND_BCFG` one |
-| `f_(ω^2)` | `fwp2_4`, `fwp2_5` | The counter segment is the `3^n` run itself; `fwp2_4`'s head may be in `A`/`C`/`G`, `fwp2_5`'s only in `C`/`G` |
-| `f_(ω^2+1)` | `fwp21_4`, `fwp21_5`, `fwp21_6`, `fwp21_7` | `fwp21_4` / `fwp21_5` have the landmark `0^inf A\|C\|G> 3^m 0^n <sentinel>` with two counters, `fwp21_6` / `fwp21_7` the `f_(ω^2+1)` shape with a `5^r` prefix |
+| `f_(ω^2)` | `fwp2_3`, `fwp2_4`, `fwp2_5`, `fwp2_6` | `fwp2_4` / `fwp2_5` use `KIND_THREE` (the counter segment is the `3^n` run itself; `fwp2_4`'s head may be in `A`/`C`/`G`, `fwp2_5`'s only in `C`/`G`); `fwp2_3` is a `KIND_ONES` core with the head in `P` |
+| `f_(ω^2+1)` | `fwp21_3`, `fwp21_4`, `fwp21_5`, `fwp21_6`, `fwp21_7` | `fwp21_4` / `fwp21_5` have the landmark `0^inf A\|C\|G> 3^m 0^n <sentinel>` with two counters, `fwp21_6` / `fwp21_7` the `f_(ω^2+1)` shape with a `5^r` prefix; `fwp21_3` is a `KIND_ONES` core with the head in `P` |
 | `f_(ω^2+1)+f_ω` | `fwp21fw_4`, `fwp21fw_6` | `fwp21fw_4`'s landmark is `1^n G> 1^m 0` (head in state `G`); `fwp21fw_6` has the `f_(ω^2+1)` shape |
 | `f_(ω^2+2)` | `fwp22_4`, `fwp22_5`, `fwp22_7` | `fwp22_4` is `0^inf A\|C\|G> 3^m 0^n 1^k 2` (three counters); `fwp22_5` is `0^inf A\|C\|G> 3^m 4^n 0^k 4` (the `4^n` run replaces the `0^n` run); `fwp22_7` is the `5^r`-prefixed variant |
 | `f_(ω^2+2)+f_ω` | `fwp22fw_4` | Landmark `1^n G> 1^m 0`, head in state `G`, one extra blank cell after `1^m` |
 | `f_(ω^2+3)` | `fwp23_4` | Landmark `0^inf A\|C\|G> 3^m 0^n 1^k 2^p 3`, four counters |
-| `f_(ω^ω)` | `fwpw_5` | Landmark `0^inf 3^(2m+1) 2^k A> 1^n 4 2`, two fixed segments after `1^n` |
+| `f_(ω^ω)` | `fwpw_4`, `fwpw_5`, `fwpw_7`, `fwpw_8` | `fwpw_5` / `fwpw_7` / `fwpw_8` have the landmark `0^inf 3^(2m+1) 2^k A> 1^n 4 2` (two fixed segments after `1^n`), `fwpw_4` the shorter `... 1^n 2` |
 | `double f_(ω^ω)` | `dfwpw_5` | `0^inf 3^(2m+1) 2^k A> 1^n 4 3 0` |
-| `f_(ω^ω+1)` | `fwpw1_5a`, `fwpw1_5b`, `fwpw1_6` | Three variants of `0^inf 3^(2m+1) 2^k A> 1^n 4 <segment>`: `2^p 0`, `0^p 2` and `2^p 5`; `2^p` is the fourth counter |
+| `f_(ω^ω+1)` | `fwpw1_4`, `fwpw1_5a`, `fwpw1_5b`, `fwpw1_6`, `fwpw1_7`, `fwpw1_8` | Variants of `0^inf 3^(2m+1) 2^k <head> 1^n 4 <segment>`: `2^p 0`, `0^p 2`, `2^p 5`, `2 0 2^p 0` and `4 2^p 5`; `2^p` is the fourth counter. `fwpw1_4` and `fwpw1_8` have the head in `I` (in `fwpw1_8` also in `A`) |
+| `f_(ω^ω+1)+f_(ω^ω)` | `fwpw1fwpw_4` | Landmark `0^inf 3^(2m+1) 2^k I> 1^n 2 1 0`, head in state `I` |
+| `f_(ω^ω+2)` | `fwpw2_6` | Landmark `0^inf 3^(2m+1) 2^k B> 1^n 4 2^p 5^q 0`, head in state `B` |
 | left-hand `5^r` variants | `fwp2_6`, `fwp21_6`, `fwp21_7`, `fwp22_7` | A `5^r` segment on the left of the `3` run |
-| `f_(ε0)` | `fe0_5` | Landmark `1^m B> 2^n 0`, the counter segment `2^n` is right under the head |
+| `f_(ε0)` | `fe0_5_old`, `fe0_5` | Landmark `1^m B> 2^n 0`, the counter segment `2^n` is right under the head; `fe0_5_old` is the 17-state version, `fe0_5` the 16-state one |
+| `f_(ε0+1)` | `fe01_5`, `fe01_6`, `fe01_7`, `fe01_soc_7` | `KIND_ONES` cores with three counters; `fe01_5`'s head is in `J`, `fe01_soc_7`'s in `N` |
+| `f_(ε1)` | `fe1_6`, `fe1_7`, `fe1_8` | Landmark `1^m B> 5^n 0`, the `5^n` run is right under the head |
 
-## Measured reachability (2026-11-19)
+## Measured reachability (2026-11-25)
 
 Test conditions: `--all --cap 3000 --budget 3e6`, blank-tape start, state count = the core's fixed state count, symbol count = the core's own symbol count.
 
@@ -122,13 +154,13 @@ The "Result" column: `✅` = landmark found, `❌` = not found. The `abort` colu
 | `dfw_4` | ❌ | 0 | 3 | 0 | Halted after 3 steps (needs `--startstate` or `--start cfg`) |
 | `tfw_5` | ❌ | 0 | 17 | 0 | Halted after 17 steps (same) |
 | `tfw_6` | ✅ | 0 | 1 838 748 | 23 | `0^inf 3^(1) 2^16 A> 1^3 2` |
-| `fw1_3` | ✅ | 1 | 16 777 216 | 159 | `1^22 F> 1^3 2` (the new 7-state core; the old `fw1_3a` / `fw1_3b` found `1^2 F> 0^1 1` / `1^2 F> 0^2 1`) |
-| `fw1_4` | ❌ | 0 | 54 206 | 1 | Reached only 1 node (the newer 4-state core) |
+| `fw1_3` | ✅ | 1 | 16 777 216 | 159 | `1^22 F> 1^3 2` (the 7-state core; the old `fw1_3a` / `fw1_3b` found `1^2 F> 0^1 1` / `1^2 F> 0^2 1`) |
+| `fw1_4` | ❌ | 0 | 54 206 | 1 | Reached only 1 node (the 4-state core) |
 | `fw1_5` | ✅ | 1 | 16 777 216 | 181 | `0^inf 3^(1) 2^30 A> 1^2 4^2 0^inf` |
 | `fw1_6` | ❌ | 0 | 36 055 | 1 | Reached only 1 node |
 | `fw1fw_4` | ✅ | 0 | 3 000 | 0 | `0^inf 3^(1) 2^5 A> 1^1 0^inf` |
 | `fw2_3` | ❌ | 0 | 233 856 | 2 | Reached only 2 nodes |
-| `fw2_4` | ❌ | 0 | 6 398 877 | 54 | Reached 54 nodes (the newer 6-state core) |
+| `fw2_4` | ❌ | 0 | 6 398 877 | 54 | Reached 54 nodes (the 6-state core) |
 | `fw2_5` | ✅ | 1 | 16 777 216 | 292 | `0^inf 3^(1) 2^1 B> 1^3 2^2 4^3 0^inf` |
 | `fw2_6` | ❌ | 1 | 16 777 216 | 156 | Budget exhausted, no match |
 | `fw2_7` | ❌ | 0 | 45 056 | 1 | Reached only 1 node; the 3-state / 7-symbol core has no construction phase of its own |
@@ -140,21 +172,29 @@ The "Result" column: `✅` = landmark found, `❌` = not found. The `abort` colu
 | `fw4_5` | ❌ | 1 | 16 777 216 | 145 | Budget exhausted, no match |
 | `fw4_8` | ✅ | 1 | 16 777 216 | 144 | `0^inf 3^(1) 2^1 A> 1^2 4^4 5^3 6^3 7^4 0^inf` |
 | `fwm2_3` | ❌ | 0 | 195 174 | 3 | Reached only 3 nodes |
-| `fwm2_5` | ✅ | 1 | 16 777 216 | 160 | `0^inf 3^(1) 2^10 D> 1^2 0^inf` (the new 6-state core with the head in `D`; the old 8-state `A`-head core found `0^inf 3^(1) 2^1 A> 1^1 2`) |
+| `fwm2_5` | ✅ | 1 | 16 777 216 | 160 | `0^inf 3^(1) 2^10 D> 1^2 0^inf` (the 6-state core with the head in `D`) |
 | `fwm2_6` | ❌ | 1 | 16 777 216 | 96 | Budget exhausted, no match |
-| `fwm2_7` | ✅ | 1 | 16 777 216 | 93 | `0^inf 3^(1) 2^2 A> 1^3 2` |
+| `fwm2_7` | ✅ | 1 | 16 777 216 | 107 | `0^inf 3^(1) 2^3 A> 1^1 2` |
 | `fwm2fw_5` | ✅ | 0 | 2 232 425 | 18 | `0^inf 3^(1) 2^3 A> 1^3 0^inf` |
 | `dfwm2_5` | ✅ | 1 | 16 777 216 | 93 | `0^inf 3^(1) 2^1 A> 1^5 2` |
 | `fwm21_3` | ❌ | 1 | 16 777 216 | 115 | Budget exhausted, no match (the txt notes that the state / symbol count must be increased) |
 | `fwm21_4` | ❌ | 1 | 16 777 216 | 88 | Budget exhausted, no match |
 | `fwm21_5` | ✅ | 1 | 16 777 216 | 133 | `0^inf 3^(1) 2^3 A> 1^2 4^2 0^inf` |
 | `fwm21_6` | ❌ | 1 | 16 777 216 | 81 | Budget exhausted, no match |
-| `fwm21_7` | ❌ | 1 | 16 777 216 | 159 | Budget exhausted, no match |
+| `fwm21_7` | ✅ | 1 | 16 777 216 | 111 | `0^inf 3^(1) 2^4 B> 1^1 2^2 0^inf` (the 5-state `B`-head core) |
+| `fwm21_7i` | ❌ | 1 | 16 777 216 | 159 | Budget exhausted, no match (the older 6-state `A`-head core) |
+| `fwm21_8` | ✅ | 1 | 16 777 216 | 84 | `0^inf 3^(1) 2^6 A> 1^2 7^1 4` |
+| `fwm21fw1_7` | ❌ | 1 | 16 777 216 | 87 | Budget exhausted, no match |
+| `fwm21dfw1_7` | ❌ | 1 | 16 777 216 | 81 | Budget exhausted, no match |
+| `fwm21tfw1_7` | ✅ | 1 | 16 777 216 | 77 | `0^inf 3^(1) 2^1 B> 1^2 2 4^1 3 5 0^inf` |
+| `dfwm21_8` | ✅ | 1 | 16 777 216 | 93 | `0^inf 3^(1) 2^9 A> 1^2 7^7 0^inf` |
 | `fwm22_3` | ❌ | 1 | 16 777 216 | 171 | Budget exhausted, no match |
 | `fwm22_8` | ❌ | 1 | 16 777 216 | 118 | Budget exhausted, no match |
+| `fwp2_3` | ✅ | 1 | 16 777 216 | 132 | `1^2 P> 1^2 0^inf` |
 | `fwp2_4` | ❌ | 0 | 2 653 673 | 18 | 18 nodes, ended naturally; the txt notes that the state / symbol count must be increased |
 | `fwp2_5` | ❌ | 1 | 16 777 216 | 101 | Budget exhausted, no match |
 | `fwp2_6` | ✅ | 1 | 16 777 216 | 94 | `0^inf 5^5 3^(1) 2^1 A> 1^1 2` |
+| `fwp21_3` | ❌ | 0 | 402 558 | 3 | Reached only 3 nodes, ended naturally |
 | `fwp21_4` | ✅ | 1 | 16 777 216 | 85 | `0^inf A\|C\|G> 3^4 0^3 1 0^inf` |
 | `fwp21_5` | ❌ | 1 | 16 777 216 | 79 | Budget exhausted, no match |
 | `fwp21_6` | ✅ | 1 | 16 777 216 | 75 | `0^inf 5^4 3^(7) 2^1 A> 1^1 2^2 5` |
@@ -166,14 +206,30 @@ The "Result" column: `✅` = landmark found, `❌` = not found. The `abort` colu
 | `fwp22_7` | ❌ | 1 | 16 777 216 | 65 | Budget exhausted, no match |
 | `fwp22fw_4` | ✅ | 0 | 2 982 473 | 11 | `1^2 G> 1^2 0` |
 | `fwp23_4` | ❌ | 0 | 5 040 451 | 19 | The blank tape does not reach it (see the table below) |
+| `fwpw_4` | ❌ | 0 | 1 | 0 | Halted after 1 step, no node was expanded (the 21-state core has no construction phase of its own) |
 | `fwpw_5` | ✅ | 1 | 16 777 216 | 68 | `0^inf 3^(1) 2^4 A> 1^4 4 2` (with `--cap 200000 --budget 3e7`: `0^inf 3^(1) 2^4 A> 1^2 4 2`) |
+| `fwpw_7` | ✅ | 1 | 16 777 216 | 80 | `0^inf 3^(5) 2^1 A> 1^1 4 2` |
+| `fwpw_8` | ✅ | 1 | 16 777 216 | 66 | `0^inf 3^(13) 2^2 A> 1^2 4 2` |
 | `dfwpw_5` | ✅ | 1 | 16 777 216 | 86 | `0^inf 3^(1) 2^23 A> 1^1 4 3 0^inf` (with `--cap 20000 --budget 2e7`: `0^inf 3^(27) 2^1 A> 1^2 4 3 0`; with `--cap 200000 --budget 3e9`: `0^inf 3^(1) 2^23 A> 1^1 4 3 0^inf`) |
+| `fwpw1_4` | ❌ | 1 | 16 777 216 | 67 | Budget exhausted, no match |
 | `fwpw1_5a` | ❌ | 0 | 1 | 0 | Halted after 1 step (the txt says to use a start state other than `A`) |
 | `fwpw1_5b` | ❌ | 1 | 16 777 216 | 61 | Budget exhausted, no match |
 | `fwpw1_6` | ❌ | 1 | 16 777 216 | 59 | Budget exhausted, no match |
-| `fe0_5` | ❌ | 1 | 16 777 216 | 58 | Budget exhausted, no match (with `--start cfg --m 2 --n 5` the input configuration `1^2 B> 2^5 0` is recognised) |
+| `fwpw1_7` | ❌ | 1 | 16 777 216 | 293 | Budget exhausted, no match |
+| `fwpw1_8` | ❌ | 1 | 16 777 216 | 83 | Budget exhausted, no match |
+| `fwpw1fwpw_4` | ❌ | 1 | 16 777 216 | 48 | Budget exhausted, no match |
+| `fwpw2_6` | ❌ | 1 | 16 777 216 | 53 | Budget exhausted, no match |
+| `fe0_5_old` | ❌ | 1 | 16 777 216 | 58 | Budget exhausted, no match (the 17-state version) |
+| `fe0_5` | ❌ | 1 | 16 777 216 | 159 | Budget exhausted, no match (with `--start cfg --m 2 --n 5` the input configuration `1^2 B> 2^5 0` is recognised) |
+| `fe01_5` | ❌ | 1 | 16 777 216 | 147 | Budget exhausted, no match |
+| `fe01_6` | ❌ | 1 | 16 777 216 | 369 | Budget exhausted, no match |
+| `fe01_7` | ✅ | 1 | 16 777 216 | 83 | `1^1 B> 5 2^5 0^inf` |
+| `fe01_soc_7` | ❌ | 1 | 16 777 216 | 358 237 | Budget exhausted, no match |
+| `fe1_6` | ❌ | 1 | 16 777 216 | 35 | Budget exhausted, no match |
+| `fe1_7` | ❌ | 1 | 16 777 216 | 84 594 | Budget exhausted, no match |
+| `fe1_8` | ❌ | 1 | 16 777 216 | 598 790 | Budget exhausted, no match |
 
-**27 / 56 found the landmark** (`abort=1` means the budget ran out after the landmark was found, so the result may still be too small). The numbers are from a uniform re-measurement on 2026-11-19; the supplementary results of individual cores under a larger budget / more states are in their own sections.
+**35 / 80 found the landmark** (`abort=1` means the budget ran out after the landmark was found, so the result may still be too small). The numbers are from a uniform re-measurement on 2026-11-25; the supplementary results of individual cores under a larger budget / more states are in their own sections.
 
 > ⚠️ "❌ not reached within the budget" is **not** the same as "this core cannot produce this landmark". These cores have deeper construction phases that the DFS does not reach within the budget. Increasing `--budget` / `--cap`, adding `--states`, or switching to `--start cfg` may find them.
 
@@ -195,21 +251,37 @@ The "Result" column: `✅` = landmark found, `❌` = not found. The `abort` colu
 | `fwm21_3` | 115 nodes, budget exhausted (the landmark is now `1^m B> 0 2^k 1^n 0 1^p 2`) | `--start cfg --p 1` (verified: it recognises the input configuration `1^1 B> 2^16 1^3` at step 0), increase `--states` / `--symbols` (the txt says this is needed) |
 | `fwm21_4` | 88 nodes, budget exhausted | `--start cfg` (verified: it recognises the input configuration `1^3 B> 0 2^2 1^4 0^2 3`) |
 | `fwm21_6` | 81 nodes, budget exhausted | `--states 8` |
-| `fwm21_7` | 159 nodes, budget exhausted | `--start cfg --p 1` (verified: it recognises the input configuration `0^inf 5 3^(1) 2^16 A> 1^3 2 5` at step 0), `--states 7` |
+| `fwm21_7i` | 159 nodes, budget exhausted (the older 6-state `A`-head core; the new 5-state `fwm21_7` reaches its landmark) | `--start cfg --p 1` (verified: it recognises the input configuration `0^inf 5 3^(1) 2^16 A> 1^3 2 5` at step 0), `--states 7` |
+| `fwm21fw1_7` | 87 nodes, budget exhausted | `--start cfg --p 1` (the input configuration is `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 2 0^inf`), increase `--budget` / `--cap` |
+| `fwm21dfw1_7` | 81 nodes, budget exhausted | `--start cfg --p 1` (the input configuration is `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 1 2 0^inf`), increase `--budget` / `--cap` |
 | `fwm22_3` | 171 nodes, budget exhausted | `--start cfg --p 1 --q 1` (verified: it recognises the input configuration `1^1 B> 2^16 1^3` at step 0), `--states 13` |
 | `fwm22_8` | 118 nodes, budget exhausted | `--start cfg --p 1 --q 1` (verified: it recognises the input configuration `0^inf 5 3^(1) 2^16 A> 1^3 2 7 5` at step 0), `--states 7` |
 | `fwp2_4` | 18 nodes, ended naturally | `--start cfg` (verified: it recognises the input configuration `0^inf A> 3^3 0`), increase `--states` / `--symbols` (the txt says this is needed) |
 | `fw_3` | Reached only 1 node, ended naturally | `--states 6` (verified: it finds `1^3 A> 1`), `--symbols 4` (the txt says this is needed) |
+| `fwp21_3` | 3 nodes, ended naturally (the 19-state core) | `--start cfg --n 2 --m 2 --k 1` (the input configuration is `1^n P> 1^m 0^2 1^k`), increase `--states` / `--symbols` |
 | `fwp21_5` | 79 nodes, budget exhausted | Increase `--budget` / `--cap`, `--states 10` |
 | `fwp21_7` | 147 nodes, budget exhausted | `--start cfg --p 1 --r 1` (verified: it recognises the input configuration `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5` at step 0), `--states 8` |
-| `fe0_5` | 58 nodes, budget exhausted | `--start cfg` (verified: it recognises the input configuration `1^2 B> 2^5 0`), increase `--budget` / `--cap` |
+| `fe0_5` | 159 nodes, budget exhausted | `--start cfg --m 2 --n 5` (verified: it recognises the input configuration `1^2 B> 2^5 0`), increase `--budget` / `--cap` |
+| `fe0_5_old` | 58 nodes, budget exhausted (the 17-state version of `fe0_5`) | `--start cfg --m 1 --n 3`, increase `--budget` / `--cap` |
 | `fwp23_4` | 19 nodes, ended naturally (with `--cap 200000 --budget 3e9` it still had not matched after 261 399 343 steps; `--states 13` / `--symbols 5` likewise did not match) | `--start cfg` (verified: it recognises the input configuration `0^inf A> 3^1 0^2 1^1 2^1 3`), increase `--budget` / `--cap` |
 | `fwp2_5` | 101 nodes, budget exhausted | Increase `--budget` / `--cap`; `--start cfg --n 3` (verified: it recognises the input configuration `0^inf C> 3^3 0`, the start state is `C` because the landmark's head set is `C`/`G`) |
 | `fwp22_5` | 0 nodes, hit `--cap` on the first branch | Increase `--cap` (the default 3 000 is far too small for this core), then `--budget`; `--start cfg --m 1 --n 2 --k 1` (verified: it recognises the input configuration `0^inf A> 3^1 4^2 0^1 4`) |
 | `fwp22_7` | 65 nodes, budget exhausted | `--start cfg --p 1 --q 1 --r 1` (verified: it recognises the input configuration `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5 6` at step 0), increase `--budget` / `--cap` |
+| `fwpw_4` | Halted after 1 step (`abort=0`, the 21-state core) | `--start cfg --k 1 --n 1` (the input configuration is `0^inf 3^(2m+1) 2^k A> 1^n 2`), increase `--budget` / `--cap` |
+| `fwpw1_4` | 67 nodes, budget exhausted | `--start cfg --p 1 --k 1 --n 1` (the input configuration is `0^inf 3^(2m+1) 2^k I> 1^n 2 0 2^p 0`), increase `--budget` / `--cap` |
 | `fwpw1_5a` | Halted after 1 step (`abort=0`) | `--startstate` with a state other than `A` (the txt says so explicitly); `--start cfg --k 2 --n 3 --m 1 --p 2` (verified: it recognises the input configuration `0^inf 3^(3) 2^2 A> 1^3 4 2^2`) |
 | `fwpw1_5b` | 61 nodes, budget exhausted | `--start cfg --k 2 --n 3 --m 1 --p 2` (verified: it recognises the input configuration `0^inf 3^(3) 2^2 A> 1^3 4`), increase `--budget` / `--cap` |
 | `fwpw1_6` | 59 nodes, budget exhausted | `--start cfg --k 2 --n 3 --m 1 --p 2` (verified: it recognises the input configuration `0^inf 3^(3) 2^2 A> 1^3 4 2^2 5`), increase `--budget` / `--cap` |
+| `fwpw1_7` | 293 nodes, budget exhausted | `--start cfg --p 2 --k 2 --n 3 --m 1` (the input configuration is `0^inf 3^(3) 2^2 A> 1^3 4 2^2 5`), increase `--budget` / `--cap` |
+| `fwpw1_8` | 83 nodes, budget exhausted | `--start cfg --p 2 --k 2 --n 3 --m 1` (the input configuration is `0^inf 3^(3) 2^2 A> 1^3 4 2^2 5`), increase `--budget` / `--cap` |
+| `fwpw1fwpw_4` | 48 nodes, budget exhausted | `--start cfg --k 2 --n 3 --m 1` (the input configuration is `0^inf 3^(3) 2^2 I> 1^3 2 1`), increase `--budget` / `--cap` |
+| `fwpw2_6` | 53 nodes, budget exhausted | `--start cfg --q 1 --p 1 --k 2 --n 3 --m 1` (the input configuration is `0^inf 3^(3) 2^2 B> 1^3 4 2 5`), increase `--budget` / `--cap` |
+| `fe01_5` | 147 nodes, budget exhausted | `--start cfg --k 1 --m 1 --n 1` (the input configuration is `1^k J> 1^m 3 2^n 4 0^inf`), increase `--budget` / `--cap` |
+| `fe01_6` | 369 nodes, budget exhausted | `--start cfg --m 1 --k 1 --n 1` (the input configuration is `1^m B> 5^k 2^n 0^inf`), increase `--budget` / `--cap` |
+| `fe01_soc_7` | 358 237 nodes, budget exhausted | `--start cfg --m 1 --n 1 --p 1` (the input configuration is `1^m N> 1^n 5^p 0^inf`), increase `--budget` / `--cap` |
+| `fe1_6` | 35 nodes, budget exhausted | `--start cfg --m 1 --n 4` (the input configuration is `1^m B> 5^n 0^inf`), increase `--budget` / `--cap` |
+| `fe1_7` | 84 594 nodes, budget exhausted | `--start cfg --m 1 --n 4` (the input configuration is `1^m B> 5^n 0^inf`), increase `--budget` / `--cap` |
+| `fe1_8` | 598 790 nodes, budget exhausted | `--start cfg --m 1 --n 4` (the input configuration is `1^m B> 5^n 0^inf`), increase `--budget` / `--cap` |
 
 ## Special core notes
 
@@ -283,7 +355,7 @@ Landmark `1^n A> 1 0`:
 
 `fw_3` **cannot** produce this shape on a blank tape with 5 states: both transitions into state `A` (`A`'s `1LE` and `D`'s `1RC`) write `2`, so while the machine runs, whenever the head is in state `A` the head cell is a `2` and can never be a `1`. Therefore `1^n A> 1` only holds in the **input configuration** (step 0); the txt explicitly says "Please increase state or symbol count to search!". In practice, `--states 6 --cap 1e7 --budget 3e8` finds `1^1` / `1^2` / `1^3 A> 1` (that run was aborted manually before reaching the budget limit), because the extra states give the DFS the chance to construct a machine that moves a `1` into `A`.
 
-### `fe0_5` — a `KIND_ONES` core whose head cell is on the `2^n` segment
+### `fe0_5` / `fe0_5_old` — a `KIND_ONES` core whose head cell is on the `2^n` segment
 
 Landmark `1^m B> 2^n 0^inf`:
 
@@ -293,7 +365,12 @@ Landmark `1^m B> 2^n 0^inf`:
 - `n` is the length of the `2^n` run (`n >= 3`), importance is `n > m` → slot order `{ SLOT_N, SLOT_M }`
 - It is also `KIND_ONES`: the difference from `KIND_THREE` is that the left side is not blank but a run of `1^m` (`m` is the second counter); `right[]` needs only one segment `{2,3,-1,SLOT_N}`
 
-`fe0_5` has 17 states (A..Q), exceeding the original `MAXST` of 16, so `MAXST` was raised to **25** (A..Y are ordinary states, `'Z'` is the halt marker and does not count as a state).
+Both blocks have the **same** cfg and slot lines; they differ only in the transition table:
+
+- `fe0_5_old` — 17 states / 5 symbols, the original Wythagoras BB(19,5) champion core (68 non-halt transitions)
+- `fe0_5` — 16 states / 5 symbols, the shorter variant (63 non-halt transitions)
+
+`fe0_5_old` has 17 states (A..Q), exceeding the original `MAXST` of 16, so `MAXST` was raised to **25** (A..Y are ordinary states, `'Z'` is the halt marker and does not count as a state).
 
 In practice: `--start cfg --m 2 --n 5` recognises the input configuration `1^2 B> 2^5 0` at step 0; starting from a blank tape the landmark was not reached within a 3e9 step budget (`abort=1`), which is **insufficient budget** rather than the core not producing the shape.
 
@@ -416,7 +493,7 @@ Landmark `0^inf 3^(2m+1) 2^k D> 1^n 0`:
 
 In practice: the blank-tape search finds `0^inf 3^(1) 2^10 D> 1^2 0^inf` under the default budget (steps=16 777 216 / nodes=160 — the budget ran out, so the result may still be too small); `--start cfg` recognises the input configuration `0^inf 3^(1) 2^16 D> 1^3 0^inf` at step 0.
 
-### `fw2_7` / `fw4_8` / `fwm2_7` / `fwm21_7` / `fwm22_8` / `fwp21_7` / `fwp22_7` — the newer `KIND_BCFG` variants
+### `fw2_7` / `fw4_8` / `fwm2_7` / `fwm21_7` / `fwm21_7i` / `fwm22_8` / `fwp21_7` / `fwp22_7` — the newer `KIND_BCFG` variants
 
 All of them keep the standard left-hand structure `0^inf 3^(2m+1) 2^k` and put the head on the first cell of the `1^n` run; they differ only in the right-hand segments:
 
@@ -425,15 +502,18 @@ All of them keep the standard left-hand structure `0^inf 3^(2m+1) 2^k` and put t
 | `fw2_7` | `BCFG(A) 4^1 5^p 6^q BLANK` | a fixed `4`, the counter `5^p`, the counter `6^q`, then the whole right side must be blank | `q > p > k > n > m` |
 | `fw4_8` | `BCFG(A) 4^p 5^q 6^r 7^s BLANK` | four counters; the fourth is the `s` slot (there is **no `--s` CLI option**, so `--start cfg` always uses `s = 1`) | `s > r > q > p > k > n > m` |
 | `fwm2_7` | `BCFG(A) 2^1` | a single trailing `2` ("≥1 cell" by the **last-segment rule**, `termBlank` false) | `k > n > m` |
-| `fwm21_7` | `5^1 BCFG(A) 2^p 5^1 BLANK` | **one** `5` left of the `3` run, the counter `2^p`, a fixed `5`, then blank | `p > k > n > m` |
+| `fwm21_7` | `BCFG(B) 2^p BLANK` | the counter `2^p`, then blank; the head is in `B`, not `A` | `p > k > n > m` |
+| `fwm21_7i` | `5^1 BCFG(A) 2^p 5^1 BLANK` | **one** `5` left of the `3` run, the counter `2^p`, a fixed `5`, then blank | `p > k > n > m` |
 | `fwm22_8` | `5^1 BCFG(A) 2^p 7^q 5^1 BLANK` | the same single `5` on the left, the counters `2^p` and `7^q`, a fixed `5`, then blank | `q > p > k > n > m` |
 | `fwp21_7` | `5^r BCFG(A) 2^p 5^1 BLANK` | a **run** of `5`s on the left (slot `r5`), the counter `2^p`, a fixed `5`, then blank | `p > r5 > k > n > m` |
 | `fwp22_7` | `5^r BCFG(A) 2^p 5^q 6^1` | the left `5^r` run, the counters `2^p` and `5^q`, and a trailing `6` ("≥1 cell", `termBlank` false) | `q > p > r5 > k > n > m` |
 
 The left-hand `5` marker has two spellings: `5^1` means **exactly one** `5` on the left (`L5_ONE`), `5^r` means a **run** of `5`s counted into slot `r5` (`L5_MANY`) — the same distinction as between `fwm2_6` / `fwm21_6` and `fwp2_6` / `fwp21_6`.
 
-In practice: `fw4_8` (maximum `0^inf 3^(1) 2^1 A> 1^2 4^4 5^3 6^3 7^4 0^inf`) and `fwm2_7` (maximum `0^inf 3^(1) 2^2 A> 1^3 2`) reach their landmark under the default budget; the other five do not. All seven recognise their input configuration at step 0 with `--start cfg`:
-`fw2_7` → `0^inf 3^(1) 2^16 A> 1^3 4 5 6`, `fw4_8` → `0^inf 3^(1) 2^16 A> 1^3 4 5 6 7`, `fwm2_7` → `0^inf 3^(1) 2^16 A> 1^3 2`, `fwm21_7` → `0^inf 5 3^(1) 2^16 A> 1^3 2 5`, `fwm22_8` → `0^inf 5 3^(1) 2^16 A> 1^3 2 7 5`, `fwp21_7` → `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5`, `fwp22_7` → `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5 6`.
+> `fwm21_7` was replaced by the 5-state `B`-head core `BCFG(B) 2^p BLANK`; the previous 6-state `A`-head core (`5^1 BCFG(A) 2^p 5^1 BLANK`) is kept in the list under the name `fwm21_7i` (the `i` suffix marks the older variant).
+
+In practice: `fw4_8` (maximum `0^inf 3^(1) 2^1 A> 1^2 4^4 5^3 6^3 7^4 0^inf`), `fwm2_7` (maximum `0^inf 3^(1) 2^3 A> 1^1 2`) and `fwm21_7` (maximum `0^inf 3^(1) 2^4 B> 1^1 2^2 0^inf`) reach their landmark under the default budget; the other five do not. All eight recognise their input configuration at step 0 with `--start cfg`:
+`fw2_7` → `0^inf 3^(1) 2^16 A> 1^3 4 5 6`, `fw4_8` → `0^inf 3^(1) 2^16 A> 1^3 4 5 6 7`, `fwm2_7` → `0^inf 3^(1) 2^16 A> 1^3 2`, `fwm21_7i` → `0^inf 5 3^(1) 2^16 A> 1^3 2 5`, `fwm22_8` → `0^inf 5 3^(1) 2^16 A> 1^3 2 7 5`, `fwp21_7` → `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5`, `fwp22_7` → `0^inf 5^1 3^(1) 2^16 A> 1^3 2 5 6`.
 
 ### How trailing blanks are written (`termBlank`)
 
@@ -448,4 +528,109 @@ The template printed by `--cores` always shows the trailing blank as `0` (`0^inf
 
 The landmark has a `5^r` segment on the left. That `r` corresponds to slot `r5` (`SLOT_R5`), which is a **different slot** from the `r` of the right-hand `1^r` segment (`SLOT_R`) in cores such as `fw3_5`. In `bbcores_new.txt` both are written as `r` and are disambiguated by context.
 
-`fwp2_6` (`BCFG(A) 2^1`) and `fwp21_6` (`BCFG(A) 2^p 5^1`) are the two older members of this group; `fwp21_7` (`BCFG(A) 2^p 5^1 BLANK`) and `fwp22_7` (`BCFG(A) 2^p 5^q 6^1`) are the newer ones — see the table in "the newer `KIND_BCFG` variants" above. Note that the `5^r` on the left is a **run** (`L5_MANY`, slot `r5`), while `5^1` on the left of `fwm21_7` / `fwm22_8` means exactly one `5` (`L5_ONE`).
+`fwp2_6` (`BCFG(A) 2^1`) and `fwp21_6` (`BCFG(A) 2^p 5^1`) are the two older members of this group; `fwp21_7` (`BCFG(A) 2^p 5^1 BLANK`) and `fwp22_7` (`BCFG(A) 2^p 5^q 6^1`) are the newer ones — see the table in "the newer `KIND_BCFG` variants" above. Note that the `5^r` on the left is a **run** (`L5_MANY`, slot `r5`), while `5^1` on the left of `fwm21_7i` / `fwm22_8` means exactly one `5` (`L5_ONE`).
+
+### `fwp2_3` / `fwp21_3` — the `KIND_ONES` cores whose head is in state `P`
+
+Landmarks `1^n P> 1^m 0` (`fwp2_3`) and `1^n P> 1^m 0 1^k 0` (`fwp21_3`):
+
+- Both are `KIND_ONES` cores with the head state fixed to `P` — a head state of its own, next to `F` (`fw1_3`), `G` (`fwp21fw_4`), `B` (`fwm2_3`), `J` (`fe01_5`) and `N` (`fe01_soc_7`)
+- The head cell is the **first cell** of the `1^m` segment: `n` cells of `1` lie to the left of the head and `m` cells of `1` run from the head cell rightwards, so both sides are **the same run of `1`s** (the notation convention of `fwp21fw_4` / `fwp22fw_4` / `fw1_3`)
+- `fwp2_3`'s cfg is `1^n P> 1^m BLANK` — after the `1^m` run the whole right side must be blank (`termBlank`); `n >= 2`, `m >= 2`, importance `n > m`
+- `fwp21_3`'s cfg is `1^n P> 1^m 0^2 1^k BLANK` — two blank cells, then the counter `1^k`, then blank; importance `k > n > m`
+- `fwp2_3` is a 16-state / 3-symbol core, `fwp21_3` a 19-state / 3-symbol one
+
+In practice: `fwp2_3` reaches its landmark under the default budget (maximum `1^2 P> 1^2 0^inf`, 132 nodes); `fwp21_3` reaches only 3 nodes from a blank tape and ends naturally.
+
+### `fe01_5` / `fe01_6` / `fe01_7` / `fe01_soc_7` / `fe1_6` / `fe1_7` / `fe1_8` — the `f_(ε0+1)` and `f_(ε1)` cores
+
+These are all `KIND_ONES` cores with the head cell on the **first cell of a counter segment** and three counters in total:
+
+| Core | cfg | Landmark | Importance |
+|---|---|---|---|
+| `fe01_5` | `1^k J> 1^m 3^1 2^n 4^1 BLANK` | `1^k J> 1^m 3 2^n 4 0` | `k > n > m` |
+| `fe01_6` | `1^m B> 5^k 2^n BLANK` | `1^m B> 5^k 2^n 0` | `k > n > m` |
+| `fe01_7` | `1^n B> 5^1 2^m BLANK` | `1^n B> 5 2^m 0` | `n > m` |
+| `fe01_soc_7` | `1^m N> 1^n 5^p BLANK` | `1^m N> 1^n 5^p 0` | `n > m > p` |
+| `fe1_6` | `1^m B> 5^n BLANK` | `1^m B> 5^n 0` | `n > m` |
+| `fe1_7` | `1^m B> 5^n BLANK` | `1^m B> 5^n 0` | `n > m` |
+| `fe1_8` | `1^m B> 5^n BLANK` | `1^m B> 5^n 0` | `n > m` |
+
+- The head state is `J` (`fe01_5`), `B` (`fe01_6`, `fe01_7`, `fe1_6`, `fe1_7`, `fe1_8`) or `N` (`fe01_soc_7`)
+- `fe01_5`'s head cell is the first cell of the `1^m` run (the `1^k` cells to its left and the `1^m` cells to its right are the same run of `1`s); behind it come the fixed cell `3`, the counter `2^n` and the fixed cell `4`, so the two fixed cells `3` and `4` bracket the `2^n` counter
+- `fe01_6` puts the head on the first cell of the `5^k` run; `fe1_6` / `fe1_7` / `fe1_8` on the first cell of the `5^n` run; `fe01_7` on the first cell of a **fixed single** `5` (the only fixed-symbol head cell among these cores). `fe1_6` / `fe1_7` / `fe1_8` differ only in their transition tables (21 / 20 / 19 states) and share the same cfg
+- `fe01_soc_7` is the "shift overflow counter" core: the head is in `N`, the head cell is the first cell of the `1^n` run (with `m` cells of `1` to its left) and `5^p` is the third counter (`p >= 0`)
+- The trailing blank is spelled `BLANK` in every case, so `termBlank` is true and the whole right side after the last segment must be blank
+
+In practice: only `fe01_7` reaches its landmark under the default budget (maximum `1^1 B> 5 2^5 0^inf`, 83 nodes). `fe01_soc_7` (358 237 nodes), `fe1_7` (84 594 nodes) and `fe1_8` (598 790 nodes) get far into the tree but still exhaust the budget; `fe0_5` / `fe01_5` / `fe01_6` / `fe1_6` stop after 35–369 nodes.
+
+### `fwpw1_4` / `fwpw1fwpw_4` — the `f_(ω^ω+1)` cores whose head is in state `I`
+
+Landmarks `0^inf 3^(2m+1) 2^k I> 1^n 2 0 2^p 0` (`fwpw1_4`) and `0^inf 3^(2m+1) 2^k I> 1^n 2 1 0` (`fwpw1fwpw_4`):
+
+- The head state is fixed to `I` — a head state next to `A` (`fw_4` family), `B` (`fw1_4` family), `D` (`fwm2_5`) and `P` (`fwp2_3`)
+- `fwpw1_4`'s cfg is `BCFG(I) 2^1 0^1 2^p BLANK`: a fixed `2`, a fixed blank cell, the counter `2^p`, then blank; importance `p > k > n > m`
+- `fwpw1fwpw_4`'s cfg is `BCFG(I) 2^1 1^1 BLANK`: a fixed `2`, a fixed `1`, then blank; importance `k > n > m`
+- Both are 21-state / 4-symbol cores
+
+In practice: neither reaches its landmark under the default budget (`fwpw1_4` 67 nodes, `fwpw1fwpw_4` 48 nodes, both budget-exhausted).
+
+### `fwpw1_8` — the core with **two** head states (`A` and `I`)
+
+Landmark `0^inf 3^(2m+1) 2^k A|I> 1^n 4 2^p 5`:
+
+- The cfg reads `BCFG(AI) 4^1 2^p 5^1` — the head may be in state `A` **or** in state `I`, and `--cores` prints the head set as `A|I`
+- The right side is the same as `fwpw1_6` / `fwpw1_7`: a fixed `4`, the counter `2^p`, a fixed `5`; `termBlank` is false, so the trailing `5` means "≥1 cell" by the **last-segment rule**
+- Importance is `p > k > n > m` (from the `slot` line `p k n m`)
+
+> ⚠️ The txt's comment line above this block still reads `importance: k > n > m`, but the `slot` line (`p k n m`) is the authoritative one — the program prints `p > k > n > m`.
+
+### `fwpw_4` / `fwpw_7` / `fwpw_8` — the `f_(ω^ω)` family
+
+| Core | cfg | Landmark | states / syms |
+|---|---|---|---|
+| `fwpw_4` | `BCFG(A) 2^1` | `0^inf 3^(2m+1) 2^k A> 1^n 2` | 21 / 4 |
+| `fwpw_7` | `BCFG(A) 4^1 2^1` | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | 11 / 7 |
+| `fwpw_8` | `BCFG(A) 4^1 2^1` | `0^inf 3^(2m+1) 2^k A> 1^n 4 2` | 8 / 8 |
+
+- All three share the standard left-hand structure `0^inf 3^(2m+1) 2^k` and the head on the first cell of the `1^n` run; importance is `k > n > m`
+- `fwpw_4` has the short right side (`2^1` = one trailing `2`, "≥1 cell" by the **last-segment rule**, `termBlank` false); `fwpw_7` and `fwpw_8` have the two fixed segments `4` and `2`
+- `fwpw_7` and `fwpw_8` share the same cfg and differ only in their transition tables
+
+In practice: `fwpw_7` (maximum `0^inf 3^(5) 2^1 A> 1^1 4 2`) and `fwpw_8` (maximum `0^inf 3^(13) 2^2 A> 1^2 4 2`) reach their landmark under the default budget; `fwpw_4` halts after 1 step (its 21-state core has no construction phase of its own from a blank tape).
+
+### `fwm21_8` / `dfwm21_8` — the `f_(ω*2+1)` cores with a `7^p` counter
+
+| Core | cfg | Landmark | Importance |
+|---|---|---|---|
+| `fwm21_8` | `BCFG(A) 7^p 4^1` | `0^inf 3^(2m+1) 2^k A> 1^n 7^p 4` | `p > k > n > m` |
+| `dfwm21_8` | `BCFG(A) 7^p BLANK` | `0^inf 3^(2m+1) 2^k A> 1^n 7^p 0` | `p > k > n > m` |
+
+- The right side is a `7^p` counter (the fourth counter of the family), optionally followed by a fixed `4`; `dfwm21_8` is the double-`f_(ω*2+1)` variant and its right side is blank after the counter
+- Both are 5-state / 8-symbol cores
+
+In practice: both reach their landmark under the default budget (`fwm21_8` → `0^inf 3^(1) 2^6 A> 1^2 7^1 4`, `dfwm21_8` → `0^inf 3^(1) 2^9 A> 1^2 7^7 0^inf`).
+
+### `fwm21fw1_7` / `fwm21dfw1_7` / `fwm21tfw1_7` — the composite `f_(ω*2+1)` cores
+
+| Core | cfg | Landmark |
+|---|---|---|
+| `fwm21fw1_7` | `BCFG(B) 2^1 4^p 2^1 BLANK` | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 2 0` |
+| `fwm21dfw1_7` | `BCFG(B) 2^1 4^p 3^1 1^1 2^1 BLANK` | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 1 2 0` |
+| `fwm21tfw1_7` | `BCFG(B) 2^1 4^p 3^1 5^1 BLANK` | `0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 3 5 0` |
+
+- All three keep the standard left-hand structure, put the head in state `B` on the first cell of the `1^n` run, and place the counter `4^p` behind a fixed `2`
+- They differ in the tail: a fixed `2` (`f_(ω*2+1)+f_(ω+1)`), the fixed pair `3 1 2` (`+double f_(ω+1)`) and the fixed pair `3 5` (`+triple f_(ω+1)`)
+- Importance is `p > k > n > m`; all three are 6-state / 7-symbol cores
+
+In practice: only `fwm21tfw1_7` reaches its landmark under the default budget (maximum `0^inf 3^(1) 2^1 B> 1^2 2 4^1 3 5 0^inf`); `fwm21fw1_7` (87 nodes) and `fwm21dfw1_7` (81 nodes) exhaust the budget without a match.
+
+### `fwpw2_6` — the `f_(ω^ω+2)` core
+
+Landmark `0^inf 3^(2m+1) 2^k B> 1^n 4 2^p 5^q 0`:
+
+- The head is in state `B`, the left-hand structure is the standard one, and the right side is a fixed `4`, the counter `2^p`, the counter `5^q`, then blank
+- The cfg is `BCFG(B) 4^1 2^p 5^q BLANK`; importance is `q > p > k > n > m` (the `slot` line is `q>=1 p>=0 k n m`)
+- The core is 13 states / 6 symbols; the txt notes that it also appears under the name `fe1_6` in the upstream source list
+
+In practice: not reached under the default budget (53 nodes, budget exhausted).

@@ -25,7 +25,7 @@
 ```
 bbsearch/
 ├── bbsearch.cpp        # the only source file: core file parsing + search engine + CLI
-├── bbcores_new.txt     # data source: the core list (56 cores; name/cfg/slot/core four lines per block)
+├── bbcores_new.txt     # data source: the core list (80 cores; name/cfg/slot/core four lines per block)
 ├── bbsearch            # build artifact (bbsearch.exe on Windows; not committed, a gitignore candidate)
 ├── README.md           # project description for humans
 ├── AGENTS.md           # this file (AI entry point)
@@ -50,7 +50,7 @@ cd /path/to/bbsearch
 # Build
 g++ -O3 -march=native -std=c++11 -o bbsearch bbsearch.cpp
 
-# List the 56 cores (mandatory after changing the core table)
+# List the 80 cores (mandatory after changing the core table)
 ./bbsearch --cores
 
 # Single core search
@@ -85,7 +85,7 @@ Follow the style already in the file; do not introduce a new system:
 
 ```bash
 # 1) Core list self-check (core count, each core's state/symbol counts and row lengths)
-./bbsearch --cores        # expect 56 rows + 1 header row; landmark and importance columns correct
+./bbsearch --cores        # expect 80 rows + 1 header row; landmark and importance columns correct
 # 2) Actual search
 ./bbsearch --core <changed core> --cap 20000 --budget 2e7
 # 3) Full smoke run (confirm no crash)
@@ -96,7 +96,7 @@ Follow the style already in the file; do not introduce a new system:
 
 When you change a core in `bbcores_new.txt` (the `name`/`cfg`/`slot`/`core` four lines), the program reads it directly at run time, so **no recompilation is needed**; after the change run at least `--cores` and the `--all` smoke test.
 
-The transition rows of every block in the core list must be checked **character by character** (each row length must be `3 × nsym`, the number of rows must equal the state count) — checking 56 multi-row strings by hand is extremely error-prone. An automated self-check script is in [docs/getting-started.md](docs/getting-started.md) under "Core list self-check script".
+The transition rows of every block in the core list must be checked **character by character** (each row length must be `3 × nsym`, the number of rows must equal the state count) — checking 80 multi-row strings by hand is extremely error-prone. An automated self-check script is in [docs/getting-started.md](docs/getting-started.md) under "Core list self-check script".
 
 ## 7. Git workflow and commit conventions
 
@@ -174,7 +174,7 @@ The transition rows of every block in the core list must be checked **character 
 
 ## 11. Miscellaneous
 
-- **The data source is `bbcores_new.txt`**: the program reads it at run time (`name` / `cfg` / `slot` / `core` four lines per block), and **the code contains no built-in copy**. The current txt holds **56** cores. Cores added to the list are appended to the end of the run-time table; when two blocks share a name, the later one in the file wins.
+- **The data source is `bbcores_new.txt`**: the program reads it at run time (`name` / `cfg` / `slot` / `core` four lines per block), and **the code contains no built-in copy**. The current txt holds **80** cores. Cores added to the list are appended to the end of the run-time table; when two blocks share a name, the later one in the file wins.
 - **Semantics of the new format** (implemented by the parser `parseCfg()` / `buildSpec()`):
   - `<symbol>^<count>` = exactly that many cells (`4^1` = one 4); `<symbol>^<counter>` = length determined by that counter (`2^p`); `BLANK` = everything after the last segment must be blank (`termBlank`).
   - **Last-segment rule**: when the `cfg` line does **not** end with `BLANK`, the last fixed segment **without a slot** (`1^1` / `2^1` / `3^1` / `5^1`) is not locked to exactly one cell but means "≥1 cell" (`{sym,1,-1,-1}`, i.e. `maxCnt = -1`). `BLANK` and `KIND_THREE` (whose tail is always blank) are unaffected; a trailing `0` (blank cell) is still treated as a sentinel.

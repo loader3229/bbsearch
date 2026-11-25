@@ -368,10 +368,12 @@ core 5LF6LA5RA---6RA4LD5RB_1RZ3LE6LC2RB6LA1LE5RB_6RA4RC4LC4LC4LA6LC5RC_3RE1LE3LD
 
 * double f_(ω*2+1) core dfwm21_8 with 5 states 8 symbols 33 non-halt transitions.
 * Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 4^1 with n >= 1, p >= 1
-* name dfwm21_8
+* importance: p > k > n > m
+name dfwm21_8
 cfg BCFG(A) 7^p BLANK
 slot p>=1 k n m
 core 2LE3LB7LA2RA6LE3LC5RA7LB_2LD3RB1LD2RA---------3LC_3RB1LB3LC2RC1RZ1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_---5RE4LA5LE6RE4LD5RA7LC
+
 
 # f_(ω*2+2) cores
 

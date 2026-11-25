@@ -11,7 +11,7 @@
 | [architecture.md](architecture.md) | People changing the code | Internal structure, algorithms, the three landmark kinds |
 | [getting-started.md](getting-started.md) | Developers | Environment setup, build, verification workflow |
 | [cli-reference.md](cli-reference.md) | Users | Every command-line option explained |
-| [cores.md](cores.md) | Users / researchers | Landmarks, importance and measured reachability of the 56 cores |
+| [cores.md](cores.md) | Users / researchers | Landmarks, importance and measured reachability of the 80 cores |
 | [faq-troubleshooting.md](faq-troubleshooting.md) | Anyone stuck | Common blockers and troubleshooting |
 
 ## The project in one sentence
