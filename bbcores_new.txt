@@ -342,30 +342,6 @@ cfg BCFG(A) 7^p 4^1
 slot p>=1 k n m
 core ---3LB---2RA6LE3LC5RA7LB_---3RB1LD2RA---------3LC_3RB1LB3LC2RC1RZ1LC1LC7LC_6RE---3LC2RC4LE6LD5RD---_---5RE---5LE6RE4LD5RA7LC
 
-* f_(ω*2+1)+f_(ω+1) core fwm21fw1_7 with 6 states 7 symbols 33 non-halt transitions.
-* Input config is 0^inf 3^(2m+1) 2^k B> 1^n 2^1 4^p 2^1 0^inf with n >= 1
-* importance: k > n > m
-name fwm21fw1_7
-cfg BCFG(B) 2^1 4^p 2^1 BLANK
-slot p k n m
-core 5LF6LA5RA---6RA4LD5RB_1RZ3LE6LC2RB6LA1LE5RB_6RA---4LC4LC4LA6LC5RC_3RE1LE3LD2RD---6LC5RC_6RA3RE1LD2RB2RE2LE2LE_---------------5LF5RE
-
-* f_(ω*2+1)+double f_(ω+1) core fwm21dfw1_7 with 6 states 7 symbols 34 non-halt transitions.
-* Input config is 0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 312 0^inf with n >= 1
-* importance: k > n > m
-name fwm21dfw1_7
-cfg BCFG(B) 2^1 4^p 3^1 1^1 2^1 BLANK
-slot p k n m
-core 5LF6LA5RA---6RA4LD5RB_1RZ3LE6LC2RB6LA1LE5RB_6RA4RC4LC4LC4LA6LC5RC_3RE1LE3LD2RD---6LC5RC_6RA3RE1LD2RB2RE2LE2LE_---------------5LF5RE
-
-* f_(ω*2+1)+triple f_(ω+1) core fwm21tfw1_7 with 6 states 7 symbols 35 non-halt transitions.
-* Input config is 0^inf 3^(2m+1) 2^k B> 1^n 2 4^p 35 0^inf with n >= 1
-* importance: k > n > m
-name fwm21tfw1_7
-cfg BCFG(B) 2^1 4^p 3^1 5^1 BLANK
-slot p k n m
-core 5LF6LA5RA---6RA4LD5RB_1RZ3LE6LC2RB6LA1LE5RB_6RA4RC4LC4LC4LA6LC5RC_3RE1LE3LD2RD4LA6LC5RC_6RA3RE1LD2RB2RE2LE2LE_---------------5LF5RE
-
 * double f_(ω*2+1) core dfwm21_8 with 5 states 8 symbols 33 non-halt transitions.
 * Input config is 0^inf 3^(2m+1) 2^k A> 1^n 7^p 4^1 with n >= 1, p >= 1
 * importance: p > k > n > m
@@ -384,15 +360,6 @@ name fwm22_3
 cfg 1^m B> 0^1 2^k 1^n 0^1 1^p 2^q BLANK
 slot q>=1 p k n>=1 m
 core 1LD2RG2LA_2LE2LH2RB_---1RC2RB_0RC1RD0LG_0LF1LE1LE_1RG1RI---_0RC1LH2RG_1RC2LH1LA_0RI2RI2RJ_1RZ0LH1LK_0LK2LL1LK_0LF------
-
-* f_(ω*2+2) core fwm22_8 with 6 states 8 symbols 32 non-halt transitions.
-* From https://github.com/rorogamin/roros-busy-beaver-researchings/blob/main/newchampions/search/my_cores.txt
-* Input config is 0^inf 5 3^(2m+1) 2^k A> 1^n 2^p 7^q 5 0^inf with n >= 1, q >= 1
-* importance: q > p > k > n > m
-name fwm22_8
-cfg 5^1 BCFG(A) 2^p 7^q 5^1 BLANK
-slot q>=1 p k n m
-core ---3LB1LF2RA4LB5RC1LF2LE_1RZ3RB1LD2RA3LF---------_3RB1LB3LC2RC4LC0LE3RD7RB_3RB2RA3LC2RC---3RE---3RD_5RC3RE7LA4LC------------_5RB---6LA1LF------------
 
 
 # f_(ω^2) cores
@@ -427,6 +394,14 @@ name fwp2_6
 cfg 5^r BCFG(A) 2^1
 slot r>=1 k n m
 core ---3LB1RZ2RA4LB---_---3RB1LD2RA3LF5RB_3RB1LB3LC2RC4LC1LE_3RB3RE3LC2RC---3RD_5RB3RE---4LC3LG5LE_5RB5RB---1LF---5LF_5LF------1LG---5LG
+
+* f_(ω^2) core fwp2_7 with 6 states 7 symbols 32 non-halt transitions.
+* Input config is 0^inf 5^r 3^(2m+1) 2^k A> 1^n 2 with n >= 1, r >= 1
+* importance: r > k > n > m
+name fwp2_7
+cfg 5^r BCFG(A) 2^1
+slot r>=1 k n m
+core 5LF6LB1RZ1LA4LB5LA2RA_---3RB1LD---6LF5RB2RA_3RB1LB6LC2RC4LC1LE2RC_3RB3RE6LC2RC---3RD---_5RB3RE------6LA5LE4LC_5RB5RB---1LF---5LF---
 
 
 # f_(ω^2+1) cores
